@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 317111643}
   - component: {fileID: 317111642}
   m_Layer: 5
-  m_Name: Coin
+  m_Name: CoinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,8 +682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1770, y: 671}
-  m_SizeDelta: {x: 196.2191, y: 196.222}
+  m_AnchoredPosition: {x: -700.30945, y: 194.34102}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &317111642
 MonoBehaviour:
@@ -2246,7 +2246,7 @@ GameObject:
   - component: {fileID: 969530274}
   - component: {fileID: 969530273}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CoinDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2268,8 +2268,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1575.7095, y: 655}
-  m_SizeDelta: {x: 148.1174, y: 78.6429}
+  m_AnchoredPosition: {x: -587.6, y: 194.34}
+  m_SizeDelta: {x: 102.8715, y: 56.1863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969530273
 MonoBehaviour:
@@ -2741,7 +2741,7 @@ GameObject:
   - component: {fileID: 1339451678}
   - component: {fileID: 1339451677}
   m_Layer: 5
-  m_Name: heath Bar
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2763,8 +2763,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1344.9058, y: 924.70496}
-  m_SizeDelta: {x: 1042.1885, y: 194.5901}
+  m_AnchoredPosition: {x: -536.69446, y: 309.8662}
+  m_SizeDelta: {x: 418.8097, y: 87.0074}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339451677
 MonoBehaviour:
@@ -3236,7 +3236,7 @@ GameObject:
   - component: {fileID: 1679746650}
   - component: {fileID: 1679746649}
   m_Layer: 5
-  m_Name: Steam Bar
+  m_Name: SteamBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3258,8 +3258,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1344.9058, y: 802.22144}
-  m_SizeDelta: {x: 1042.1885, y: 26.1472}
+  m_AnchoredPosition: {x: -536.69446, y: 255.09998}
+  m_SizeDelta: {x: 418.8097, y: 11.6913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1679746649
 MonoBehaviour:
@@ -3715,7 +3715,7 @@ GameObject:
   - component: {fileID: 1810136747}
   - component: {fileID: 1810136746}
   m_Layer: 5
-  m_Name: timer Text
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3737,8 +3737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1602.8457, y: 971}
-  m_SizeDelta: {x: 519.3086, y: 102}
+  m_AnchoredPosition: {x: 631.3887, y: 325.9494}
+  m_SizeDelta: {x: 241.6644, y: 54.8411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1810136746
 MonoBehaviour:
