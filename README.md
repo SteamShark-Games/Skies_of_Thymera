@@ -18,6 +18,7 @@ Organize your files into logical directories based on their functionality. A cle
 2.2 Naming Conventions
 Use descriptive names that reflect the content's purpose. Make sure names don't overlap and if a script has been already named/made, do not repeat it. This also applies to game objects within the hierarchy.
 Examples:
+
 Good: PlayerController.cs
 Bad: pc.cs or controller2.cs or PlayerController2
 
