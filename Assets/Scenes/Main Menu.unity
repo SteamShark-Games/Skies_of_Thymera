@@ -560,13 +560,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 116961907}
   m_HandleRect: {fileID: 2020986361}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 64
+  m_MinValue: -40
+  m_MaxValue: 5
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 940606389}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &686857809
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +938,7 @@ GameObject:
   - component: {fileID: 940606386}
   - component: {fileID: 940606385}
   - component: {fileID: 940606388}
+  - component: {fileID: 940606389}
   m_Layer: 5
   m_Name: OptionMenu
   m_TagString: Untagged
@@ -1037,6 +1050,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &940606389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940606383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cef7d0e19f1a9140a1a3ce0fc1829bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: aeadf8512dc59d64583fc54ffe979945, type: 2}
 --- !u!1 &958289000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,7 +1401,7 @@ AudioSource:
   m_GameObject: {fileID: 1190217684}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: aeadf8512dc59d64583fc54ffe979945, type: 2}
   m_audioClip: {fileID: 8300000, guid: fe47653877ebbe6408b6ac6cf73b0e1b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
