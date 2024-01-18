@@ -5,14 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Animator anim;
+    Rigidbody2D rb;
     private enum MovementState { idle, running, jumping, falling, attack }
 
 
 
-    Rigidbody2D rb;
 
-    float speed = 10f;
-    float jumpForce = 20f;
+    public float speed = 10f;
+    bool facingRight;
+
+    float jumpForce;
+    public float jumpHeight = 15;
+    public float totalJumps;
+    bool jumping;
 
 
     float gravityScale = 5f;
@@ -28,21 +33,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Gravity();
-    }
-
-    // Basic Movement Logic 
-    void Movement()
-    {
         // Animation states?
         MovementState state;
-        
-        //Vector3 direction = Vector3.zero;
+
+        // Basic Movement Logic 
         if (Input.GetKey(KeyCode.D))
         {
             // Sets X velocity to speed
-            rb.velocity = new Vector2 (speed, rb.velocity.y);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+            if (facingRight)
+            {
+                Turn();
+            }
             state = MovementState.running;
         }
         else if (Input.GetKey(KeyCode.A))
@@ -50,27 +52,43 @@ public class Player : MonoBehaviour
             // Sets X velocity to -speed
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             state = MovementState.running;
+            if (!facingRight)
+            {
+                Turn();
+            }
         }
         else
         {
             state = MovementState.idle;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
+            totalJumps++;
+            rb.gravityScale = gravityScale;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
+            jumping = true;
         }
-    }
 
-    void Gravity()
-    {
         // If the player is moving downwards
-        if (rb.velocity.y > 0)
+        if (rb.velocity.y < 0)
         {
             rb.gravityScale = gravityScale;
         }
-        else 
+        else
         {
             rb.gravityScale = fallgravityScale;
         }
     }
+
+    void Turn()
+    {
+        //stores scale and flips the player along the x axis, 
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        facingRight = !facingRight;
+    }
 }
+
+     
