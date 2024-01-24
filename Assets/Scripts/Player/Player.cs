@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
             jumping = true;
+        
         }
 
         // If the player is moving downwards
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = fallgravityScale;
         }
+           anim.SetInteger("state", (int)state);
     }
 
     void Turn()
