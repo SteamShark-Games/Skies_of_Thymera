@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     float gravityScale = 5f;
     float fallgravityScale = 10f;
 
+    [SerializeField] private AudioSource jumpsfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +70,7 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
             jumping = true;
+            jumpsfx.Play();
         }
 
         // If the player is moving downwards
