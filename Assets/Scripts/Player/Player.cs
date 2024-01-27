@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     bool jumping;
 
 
-    float gravityScale = 5f;
+    float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
     [SerializeField] private AudioSource jumpsfx;
@@ -67,23 +67,28 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
+            rb.velocity = new Vector2(0.0f , rb.velocity.y);
             
         }
+
+
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
             Jump();
 
         }
 
-        // If the player is moving downwards
+        // IF the player 
         if (rb.velocity.y < 0)
-        {
-            rb.gravityScale = gravityScale;
-        }
-        else
         {
             rb.gravityScale = fallgravityScale;
         }
+        else
+        {
+            rb.gravityScale = light_gravityScale;
+        }
+
+        // Updating Animator per frame
            anim.SetInteger("state", (int)state);
     }
 
@@ -99,7 +104,7 @@ public class Player : MonoBehaviour
     void Jump()
     {
         totalJumps++;
-        rb.gravityScale = gravityScale;
+
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
         jumping = true;
