@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
             jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
             jumping = true;
             jumpsfx.Play();
+
         }
 
         // If the player is moving downwards
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = fallgravityScale;
         }
+           anim.SetInteger("state", (int)state);
     }
 
     void Turn()
