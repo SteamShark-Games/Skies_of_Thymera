@@ -25,11 +25,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioSource jumpsfx;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Jump();
     }
 
     // Update is called once per frame
@@ -62,15 +67,11 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
+            
         }
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
-            totalJumps++;
-            rb.gravityScale = gravityScale;
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
-            jumping = true;
-            jumpsfx.Play();
+            Jump();
 
         }
 
@@ -94,6 +95,17 @@ public class Player : MonoBehaviour
         transform.localScale = scale;
         facingRight = !facingRight;
     }
+
+    void Jump()
+    {
+        totalJumps++;
+        rb.gravityScale = gravityScale;
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
+        jumping = true;
+        jumpsfx.Play();
+    }
+
 }
 
      
