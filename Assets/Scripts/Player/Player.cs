@@ -28,12 +28,12 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim = GetComponent<Animator>();
         MovementState state;
 
         // Basic Movement Logic 
@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
+            state = MovementState.jumping;
             Jump();
         }
 
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour
         }
 
         // Updating Animator per frame
-           anim.SetInteger("state", (int)state);
+        anim.SetInteger("state", (int)state);
     }
 
     void Turn()
