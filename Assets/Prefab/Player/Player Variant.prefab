@@ -362,11 +362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.74
+      value: -2.4765167
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -7.9704065
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.z
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpsfx: {fileID: 0}
   BulletPrefab: {fileID: 8812439466814028681, guid: a505a6a6faf29bd4d97a66d4b5ae99cb, type: 3}
+  MeleePrefab: {fileID: 6393863449303835539, guid: a72082aaa585f5548bac230109eb24f5, type: 3}
   speed: 10
   jumpHeight: 7
   totalJumps: 0
