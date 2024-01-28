@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     public GameObject MeleePrefab;
 
     // Player Variables
-    public float speed = 10f;
+    public float speed = 8f;
     float projectileSpeed = 15f;
-    public float jumpHeight = 7f;
+    public float jumpHeight = 4f;
     public float totalJumps;
     float jumpForce;
     bool facingLeft;
