@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
 
     // Floats
     public float CurrentHealth = 5.0f;
-    float CapHealth = 5.0f;
+    //float CapHealth = 5.0f; - max health for protag
 
     float Damaged = 1.0f;
     float Heal = 1.0f;
@@ -59,11 +59,10 @@ public class Health : MonoBehaviour
             HP1.SetActive(true);
             HP2.SetActive(false);
         }
-        //if (CurrentHealth == 0.0f)
-        //{
-            //HP1.SetActive(false);
-            //SceneManager.LoadScene("GameOver");
-        //}
-        // trigger end screen 'gameover' :)
+        if (CurrentHealth == 0.0f)
+        {
+            HP1.SetActive(false);
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
