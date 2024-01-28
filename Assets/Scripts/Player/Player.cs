@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     enum MovementState { idle, running, jumping, falling, attack }
     public AudioSource jumpsfx;
     public GameObject BulletPrefab;
+    public GameObject MeleePrefab;
 
     // Player Variables
     public float speed = 10f;
@@ -67,13 +68,26 @@ public class Player : MonoBehaviour
             // If the player is facing left, shoot left
             if (facingLeft)
             {
-                CreateProjectile(-transform.right, projectileSpeed);
-                
+                Shoot(-transform.right, projectileSpeed); 
             }
             // else shoot right
             else
             {
-                CreateProjectile(transform.right, projectileSpeed);
+                Shoot(transform.right, projectileSpeed);
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            // If the player is facing left, Swing left
+            if (facingLeft)
+            {
+                Melee(-transform.right);
+            }
+            // else swing right
+            else
+            {
+                Melee(transform.right);
             }
         }
 
@@ -113,7 +127,7 @@ public class Player : MonoBehaviour
         jumpsfx.Play();
     }
 
-    public GameObject CreateProjectile(Vector3 direction, float speed)
+    public GameObject Shoot(Vector3 direction, float speed)
     {
         GameObject projectile = Instantiate(BulletPrefab);
         projectile.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z) + direction;
@@ -122,6 +136,13 @@ public class Player : MonoBehaviour
         return projectile;
     }
 
+    public GameObject Melee(Vector3 direction)
+    {
+        GameObject hitscan = Instantiate(MeleePrefab);
+        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z) + direction;;
+        Destroy(hitscan, 0.1f);
+        return hitscan;
+    }
 }
 
      
