@@ -4,43 +4,35 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Animator anim;
+    // References
     Rigidbody2D rb;
-    private enum MovementState { idle, running, jumping, falling, attack }
+    Animator anim;
+    enum MovementState { idle, running, jumping, falling, attack }
+    public AudioSource jumpsfx;
+    public GameObject BulletPrefab;
 
-
-
-
+    // Player Variables
     public float speed = 10f;
-    bool facingRight;
-
-    float jumpForce;
-    public float jumpHeight = 15;
+    float projectileSpeed = 15f;
+    public float jumpHeight = 7f;
     public float totalJumps;
-    bool jumping;
+    float jumpForce;
+    bool facingLeft;
 
-
+    // Gravity Scales
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
-    [SerializeField] private AudioSource jumpsfx;
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Jump();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        // Animation states?
         MovementState state;
 
         // Basic Movement Logic 
@@ -48,18 +40,18 @@ public class Player : MonoBehaviour
         {
             // Sets X velocity to speed
             rb.velocity = new Vector2(speed, rb.velocity.y);
-            if (facingRight)
+            state = MovementState.running;
+            if (facingLeft)
             {
                 Turn();
             }
-            state = MovementState.running;
         }
         else if (Input.GetKey(KeyCode.A))
         {
             // Sets X velocity to -speed
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             state = MovementState.running;
-            if (!facingRight)
+            if (!facingLeft)
             {
                 Turn();
             }
@@ -67,18 +59,30 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
-            rb.velocity = new Vector2(0.0f , rb.velocity.y);
-            
+            rb.velocity = new Vector2(0.0f , rb.velocity.y); 
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            // If the player is facing left, shoot left
+            if (facingLeft)
+            {
+                CreateProjectile(-transform.right, projectileSpeed);
+                
+            }
+            // else shoot right
+            else
+            {
+                CreateProjectile(transform.right, projectileSpeed);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
             Jump();
-
         }
 
-        // IF the player 
+        // IF the player the player is at the arc of the jump, incease gravity
         if (rb.velocity.y < 0)
         {
             rb.gravityScale = fallgravityScale;
@@ -98,17 +102,24 @@ public class Player : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
-        facingRight = !facingRight;
+        facingLeft = !facingLeft;
     }
 
     void Jump()
     {
         totalJumps++;
-
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
-        jumping = true;
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         jumpsfx.Play();
+    }
+
+    public GameObject CreateProjectile(Vector3 direction, float speed)
+    {
+        GameObject projectile = Instantiate(BulletPrefab);
+        projectile.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z) + direction;
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        Destroy(projectile, 2.0f);
+        return projectile;
     }
 
 }

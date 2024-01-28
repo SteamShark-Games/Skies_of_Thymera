@@ -362,11 +362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4639115
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.989772
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3148809147520773347, guid: d4a3320b36178974a8b83c89644dd754, type: 3}
       propertyPath: m_LocalPosition.z
@@ -441,8 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29cf3cbcbf3b844b9689c81e5200b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpsfx: {fileID: 0}
+  BulletPrefab: {fileID: 8812439466814028681, guid: a505a6a6faf29bd4d97a66d4b5ae99cb, type: 3}
   speed: 10
-  jumpHeight: 15
+  jumpHeight: 7
   totalJumps: 0
 --- !u!70 &1399827537533479641
 CapsuleCollider2D:
