@@ -3,15 +3,23 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    //Reference to waypoints
+    // Reference to waypoints
     public List<Transform> points;
-    //The int value for next point index
+    // The int value for the next point index
     int nextID = 0;
-    //The value of that applies to ID for changing
+    // The value that applies to ID for changing
     int idChangeValue = 1;
-    //Speed of movement or flying
+    // Speed of movement or flying
     public float speed = 2;
 
+    // Initial scale of the game object
+    private Vector3 initialScale;
+
+    private void Start()
+    {
+        // Store the initial scale of the game object
+        initialScale = transform.localScale;
+    }
 
     private void Reset()
     {
@@ -51,11 +59,11 @@ public class AI : MonoBehaviour
         // Get the next Point transform
         Transform goalPoint = points[nextID];
         // Flip the enemy transform to look into the point's direction
-        if (goalPoint.transform.position.x > transform.position.x) transform.localScale = new Vector3(-1, 1, 1);
-        else transform.localScale = new Vector3(1, 1, 1);
+        if (goalPoint.transform.position.x > transform.position.x) transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+        else transform.localScale = initialScale;
         // Move the enemy towards the goal point
         transform.position = Vector2.MoveTowards(transform.position, goalPoint.position, speed * Time.deltaTime);
-        // Check the distance between enemy and goal point to trigger next point
+        // Check the distance between enemy and goal point to trigger the next point
         if (Vector2.Distance(transform.position, goalPoint.position) < 0.2f)
         {
             // Check if we are at the end of the line (make the change -1)
@@ -67,3 +75,4 @@ public class AI : MonoBehaviour
         }
     }
 }
+
