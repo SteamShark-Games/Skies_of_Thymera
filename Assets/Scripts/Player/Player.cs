@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] private AudioSource shootSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,9 +68,10 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // If the player is facing left, shoot left
+            shootSoundEffect.Play();
             if (facingLeft)
             {
-                Shoot(-transform.right, projectileSpeed); 
+                Shoot(-transform.right, projectileSpeed);
             }
             // else shoot right
             else
@@ -95,6 +98,8 @@ public class Player : MonoBehaviour
         {
             state = MovementState.jumping;
             Jump();
+            jumpSoundEffect.Play();
+
         }
 
         // IF the player the player is at the arc of the jump, incease gravity
@@ -125,7 +130,7 @@ public class Player : MonoBehaviour
         totalJumps++;
         jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        jumpsfx.Play();
+
     }
 
     public GameObject Shoot(Vector3 direction, float speed)
