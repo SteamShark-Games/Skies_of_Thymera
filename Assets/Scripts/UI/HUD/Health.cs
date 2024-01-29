@@ -34,7 +34,6 @@ public class Health : MonoBehaviour
         }
         // can be changed to add different health/damage values of course
 
-
         if (CurrentHealth == 5.0f)
         {
             HP5.SetActive(true);

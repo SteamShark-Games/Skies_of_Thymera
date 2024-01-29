@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public AudioSource jumpsfx;
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
+    // Paused
+    public GameObject PauseMenu;
 
     // Player Variables
     public float speed = 10f;
