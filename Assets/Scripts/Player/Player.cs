@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     // References
     Rigidbody2D rb;
     Animator anim;
-    enum MovementState { idle, running, jumping, falling, attack }
+    enum MovementState { idle, running, jumping, falling, melee, shoot }
     public AudioSource jumpsfx;
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
             {
                 Shoot(transform.right, projectileSpeed);
             }
+             state = MovementState.shoot;
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -93,19 +94,25 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
-            state = MovementState.jumping;
+           
             Jump();
         }
 
         // IF the player the player is at the arc of the jump, incease gravity
         if (rb.velocity.y < 0)
         {
+            state = MovementState.falling;
             rb.gravityScale = fallgravityScale;
         }
         else
         {
             rb.gravityScale = light_gravityScale;
+          
         }
+          if (rb.velocity.y > 1.5f)
+            {
+                state = MovementState.jumping;
+            }
 
         // Updating Animator per frame
         anim.SetInteger("state", (int)state);
