@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour
     // UI 
     public GameObject PauseMenu;
 
+    public static float LocalTimeScale = 1f;
+    public static float deltaTime;
 
     void Update()
     {

@@ -4,8 +4,6 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 
-// issues referencing Player VVV - daytona 
-
 //public class IfPaused : MonoBehaviour
 //{
 //    public GameObject PauseMenu;
@@ -29,4 +27,3 @@ using UnityEngine.UI;
 //
 //    //            Player.Player.SetActive(false);
 //}
-//
