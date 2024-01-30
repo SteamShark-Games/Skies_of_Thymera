@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // If the player is facing left, shoot left
-            shootSoundEffect.Play();
+           
             if (facingLeft)
             {
                 Shoot(-transform.right, projectileSpeed);
@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
             {
                 Melee(transform.right);
             }
+             state = MovementState.melee;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)

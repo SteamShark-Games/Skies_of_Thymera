@@ -13,5 +13,9 @@ public class GroundCheck : MonoBehaviour
         {
            player.totalJumps = 0;
         }
+        if (collision.gameObject.CompareTag("ElevatorPlatform"))
+        {
+           player.totalJumps = 0;
+        }
     }
 }
