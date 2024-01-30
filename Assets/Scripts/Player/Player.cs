@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioSource jumpSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
+    [SerializeField] private AudioSource meleeSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             // If the player is facing left, Swing left
+            meleeSoundEffect.Play();
             if (facingLeft)
             {
                 Melee(-transform.right);
