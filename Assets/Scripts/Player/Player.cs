@@ -8,18 +8,15 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     enum MovementState { idle, running, jumping, falling, melee, shoot }
-    public AudioSource jumpsfx;
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
-    // Paused
-    public GameObject PauseMenu;
 
     // Player Variables
+    public bool isGrounded = false;
+    bool doubleJump;
     public float speed = 8f;
     float projectileSpeed = 15f;
-    public float jumpHeight = 4f;
-    public float totalJumps;
-    float jumpForce;
+    public float jumpHeight = 15f;
     bool facingLeft;
 
     // Gravity Scales
@@ -41,7 +38,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         MovementState state;
 
-        // Basic Movement Logic 
+        // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D))
         {
             // Sets X velocity to speed
@@ -68,10 +65,27 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(0.0f , rb.velocity.y); 
         }
 
+        // ------ Jumping --------
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded || doubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                jumpSoundEffect.Play();
+                isGrounded = false;
+                doubleJump = !doubleJump;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
+            rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y * 0.5f);
+
+
+        // ------- Attacks --------
+
         if (Input.GetMouseButtonDown(0))
         {
             // If the player is facing left, shoot left
-           
+            shootSoundEffect.Play();
             if (facingLeft)
             {
                 Shoot(-transform.right, projectileSpeed);
@@ -100,15 +114,7 @@ public class Player : MonoBehaviour
              state = MovementState.melee;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
-        {
-           
-            Jump();
-            jumpSoundEffect.Play();
-
-        }
-
-        // IF the player the player is at the arc of the jump, incease gravity
+        // ---- Gravity --------
         if (rb.velocity.y < 0)
         {
             state = MovementState.falling;
@@ -137,20 +143,12 @@ public class Player : MonoBehaviour
         facingLeft = !facingLeft;
     }
 
-    void Jump()
-    {
-        totalJumps++;
-        jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-    }
-
     public GameObject Shoot(Vector3 direction, float speed)
     {
         GameObject projectile = Instantiate(BulletPrefab);
         projectile.transform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z) + direction;
         projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        Destroy(projectile, 2.0f);
+        Destroy(projectile, 1.0f);
         return projectile;
     }
 
@@ -161,4 +159,18 @@ public class Player : MonoBehaviour
         Destroy(hitscan, 0.1f);
         return hitscan;
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            doubleJump = false;
+            isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("ElevatorPlatform"))
+        {
+            
+        }
+    }
+
 }
