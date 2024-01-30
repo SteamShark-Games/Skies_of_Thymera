@@ -19,6 +19,6 @@ public class FallingPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
-      
+        Destroy(gameObject, 0.5f);
     }
 }
