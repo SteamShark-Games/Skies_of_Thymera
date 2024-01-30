@@ -9,6 +9,9 @@ public class Pause : MonoBehaviour
     // UI 
     public GameObject PauseMenu;
 
+    public static float LocalTimeScale = 1f;
+    public static float deltaTime;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && PauseMenu.active == false) // Gameplay is paused
@@ -16,6 +19,7 @@ public class Pause : MonoBehaviour
             PauseMenu.SetActive(true);
             Time.timeScale = 0;
             Debug.Log("Paused");
+
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && PauseMenu.active == true) // Gameplay is unpaused ()
         {
