@@ -832,6 +832,7 @@ MonoBehaviour:
   jumpsfx: {fileID: 0}
   BulletPrefab: {fileID: 0}
   MeleePrefab: {fileID: 0}
+
   speed: 10
   jumpHeight: 15
   totalJumps: 0
@@ -3330,6 +3331,7 @@ GameObject:
   - component: {fileID: 1741144551}
   - component: {fileID: 1741144550}
   - component: {fileID: 1741144553}
+  - component: {fileID: 1741144554}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3424,6 +3426,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 339733989}
+--- !u!114 &1741144554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741144549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4051f28d46081743ba881e3fa73f55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1747489137
 GameObject:
   m_ObjectHideFlags: 0

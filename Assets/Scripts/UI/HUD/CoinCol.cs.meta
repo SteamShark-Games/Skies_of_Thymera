@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: de4df4ab8cd484341ab8b06fa2fc05f3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - CoinDisplay: {instanceID: 0}
+  - CoinSprite: {fileID: 6745838184895973428, guid: 724c46f6a5c72b64ca99e71f1e13ed45, type: 3}
+  - CurrentTotal: {instanceID: 0}
+  - Coin: {fileID: 6745838184895973428, guid: 724c46f6a5c72b64ca99e71f1e13ed45, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
