@@ -707,8 +707,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 740298498}
-        m_TargetAssemblyTypeName: PauseButtons, Assembly-CSharp
+      - m_Target: {fileID: 740298497}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
@@ -839,8 +839,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 740298498}
-        m_TargetAssemblyTypeName: PauseButtons, Assembly-CSharp
+      - m_Target: {fileID: 740298497}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: RestartButton
         m_Mode: 1
         m_Arguments:
@@ -1869,7 +1869,7 @@ GameObject:
   - component: {fileID: 740298495}
   - component: {fileID: 740298494}
   - component: {fileID: 740298493}
-  - component: {fileID: 740298498}
+  - component: {fileID: 740298497}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1934,7 +1934,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1947,24 +1947,24 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740298492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2101574079}
-  - {fileID: 1111176775}
   - {fileID: 276436946}
-  - {fileID: 261530149}
+  - {fileID: 1111176775}
   - {fileID: 273062655}
+  - {fileID: 261530149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &740298498
+  m_AnchoredPosition: {x: 784.5, y: 385}
+  m_SizeDelta: {x: 1569, y: 770}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &740298497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1973,10 +1973,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 740298492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bea3a194a62d7347add1afad2ed3ca7, type: 3}
+  m_Script: {fileID: 11500000, guid: b4051f28d46081743ba881e3fa73f55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 740298492}
+  player: {fileID: 644402081}
 --- !u!1 &762466169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,8 +3007,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 740298498}
-        m_TargetAssemblyTypeName: PauseButtons, Assembly-CSharp
+      - m_Target: {fileID: 740298497}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: ResumeButton
         m_Mode: 1
         m_Arguments:
@@ -3199,7 +3200,7 @@ GameObject:
   - component: {fileID: 1127350047}
   - component: {fileID: 1127350046}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD elements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3262,8 +3263,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -3746,10 +3747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6abdd6cd1f40e45af68101080df433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentTime: 200
-  TimerRunning: 1
-  Timer: {fileID: 1259600871}
-  CurrentTimeDisplay: {fileID: 1188034030}
 --- !u!1 &1272976308
 GameObject:
   m_ObjectHideFlags: 0
@@ -4667,6 +4664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 740298492}
+  player: {fileID: 644402081}
 --- !u!1 &1747489137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,8 +5692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 0.000453}
-  m_SizeDelta: {x: 1360, y: 565}
+  m_AnchoredPosition: {x: -0.000061035, y: 0}
+  m_SizeDelta: {x: 1569, y: 770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101574080
 MonoBehaviour:
