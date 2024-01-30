@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
     public GameObject Shoot(Vector3 direction, float speed)
     {
         GameObject projectile = Instantiate(BulletPrefab);
-        projectile.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z) + direction;
+        projectile.transform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z) + direction;
         projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
         Destroy(projectile, 2.0f);
         return projectile;
@@ -140,10 +140,8 @@ public class Player : MonoBehaviour
     public GameObject Melee(Vector3 direction)
     {
         GameObject hitscan = Instantiate(MeleePrefab);
-        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z) + direction;;
+        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + .7f, transform.position.z) + direction;;
         Destroy(hitscan, 0.1f);
         return hitscan;
     }
 }
-
-     

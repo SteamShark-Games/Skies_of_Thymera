@@ -28,7 +28,7 @@ public class AI : MonoBehaviour
 
     void Init()
     {
-        // Make box collider trigger
+        // Make Capsule collider trigger
         GetComponent<CapsuleCollider2D>().isTrigger = true;
         // Create Root object
         GameObject root = new GameObject(name + "_Root");
