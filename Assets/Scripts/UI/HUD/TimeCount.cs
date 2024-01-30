@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimeCount : MonoBehaviour
 {
@@ -16,35 +17,26 @@ public class TimeCount : MonoBehaviour
     // UI Assets
     public GameObject Timer;
     public TMP_Text CurrentTimeDisplay;
+    public float startTime = 120f;
 
     private void Start()
     {
         TimerRunning = true;
     }
-    void Update()
+
+    public void Update()
     {
-        if (TimerRunning)
+        int min = Mathf.FloorToInt(startTime / 60);
+        int sec = Mathf.FloorToInt(startTime % 60);
+        if (startTime > 0)
         {
-            if (CurrentTime > 0)
-            {
-                CurrentTime -= Time.deltaTime;
-                CurrentTimeDisplay.SetText(CurrentTime.ToString());
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                CurrentTime = 0;
-                TimerRunning = false;
-            }
+            startTime -= Time.deltaTime;
         }
-
-
-        void CurrentTime(float CurrentTime)
+        else if (startTime <= 0)
         {
-            CurrentTime += 1;
-            float min = Mathf.FloorToInt(CurrentTime / 60);
-            float sec = Mathf.FloorToInt(CurrentTime % 60);
-            CurrentTimeDisplay.text = string.Format("{0:00}:{1:00}", min, sec);
+            startTime = 0;
+            SceneManager.LoadScene("GameOver");
         }
+        CurrentTimeDisplay.text = "Timer: " + string.Format("{0:00}:{1:00}", min, sec);
     }
 }
