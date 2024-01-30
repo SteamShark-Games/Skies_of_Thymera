@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
 {
-    Vector3 offset = new Vector3 (0, 3, -5f);
-    float smoothFollowing = 0.25f;
+    Vector3 offset = new Vector3 (0, 1.5f, -6f);
+    float smoothFollowing = 0.05f;
     Vector3 vel = Vector3.zero;
 
     public Transform player;

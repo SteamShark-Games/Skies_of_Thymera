@@ -8,7 +8,7 @@ public class GameOverButtons : MonoBehaviour
 {
     public void GetUp()
     {
-        SceneManager.LoadScene("TestingGrounds");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void GiveUp()

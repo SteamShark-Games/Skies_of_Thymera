@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
     public GameObject PauseMenu;
 
     // Player Variables
-    public float speed = 10f;
+    public float speed = 8f;
     float projectileSpeed = 15f;
-    public float jumpHeight = 7f;
+    public float jumpHeight = 4f;
     public float totalJumps;
     float jumpForce;
     bool facingLeft;
@@ -26,16 +26,18 @@ public class Player : MonoBehaviour
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] private AudioSource shootSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        anim = GetComponent<Animator>();
         MovementState state;
 
         // Basic Movement Logic 
@@ -68,9 +70,10 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // If the player is facing left, shoot left
+            shootSoundEffect.Play();
             if (facingLeft)
             {
-                Shoot(-transform.right, projectileSpeed); 
+                Shoot(-transform.right, projectileSpeed);
             }
             // else shoot right
             else
@@ -95,7 +98,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && totalJumps < 2)
         {
+            state = MovementState.jumping;
             Jump();
+            jumpSoundEffect.Play();
+
         }
 
         // IF the player the player is at the arc of the jump, incease gravity
@@ -109,7 +115,7 @@ public class Player : MonoBehaviour
         }
 
         // Updating Animator per frame
-           anim.SetInteger("state", (int)state);
+        anim.SetInteger("state", (int)state);
     }
 
     void Turn()
@@ -126,13 +132,13 @@ public class Player : MonoBehaviour
         totalJumps++;
         jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * rb.gravityScale) * -2) * rb.mass;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        jumpsfx.Play();
+
     }
 
     public GameObject Shoot(Vector3 direction, float speed)
     {
         GameObject projectile = Instantiate(BulletPrefab);
-        projectile.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z) + direction;
+        projectile.transform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z) + direction;
         projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
         Destroy(projectile, 2.0f);
         return projectile;
@@ -141,10 +147,8 @@ public class Player : MonoBehaviour
     public GameObject Melee(Vector3 direction)
     {
         GameObject hitscan = Instantiate(MeleePrefab);
-        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z) + direction;;
+        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + .7f, transform.position.z) + direction;;
         Destroy(hitscan, 0.1f);
         return hitscan;
     }
 }
-
-     

@@ -11,7 +11,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("TestingGrounds");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void OptionsButton()
