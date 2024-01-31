@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame

@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour
     public GameObject LevelCompleteScene;
     public GameObject UI;
 
-    float fadeTime = 2f;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
@@ -20,6 +18,12 @@ public class GameController : MonoBehaviour
             FadeOut();
         }
     }
+
+    public void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     private async void FadeOut()
     {
         await Task.Delay(2500);
