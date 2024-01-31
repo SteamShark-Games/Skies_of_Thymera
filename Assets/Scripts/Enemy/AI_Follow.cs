@@ -8,11 +8,6 @@ public class AI_Follow : MonoBehaviour
     public float followSpeed;
     float followingDistance;
     public float detectionRad;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

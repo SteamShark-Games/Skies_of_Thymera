@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - ElevatorPlatform
   - FallingPlatform
+  - GroundCheck
   layers:
   - Default
   - TransparentFX
