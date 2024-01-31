@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,15 +43,15 @@ public class Pause : MonoBehaviour
 
     public void RestartButton()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        //string currentScene = SceneManager.GetActiveScene().name;
         Time.timeScale = 1;
         Debug.Log("Restarted");
-        SceneManager.LoadScene("currentScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitButton() //Back to the Main Menu
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 }

@@ -8,6 +8,7 @@ public class FadeScreen : MonoBehaviour
     private void Start()
     {
         gameObject.GetComponent<Image>();
+        Time.timeScale = 1.0f;
     }
 
     private void Update()
