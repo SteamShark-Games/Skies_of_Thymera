@@ -21,6 +21,7 @@ public class CoinCol : MonoBehaviour
             Debug.Log(CurrentCoin);
             CurrentTotal.SetText("x " + CurrentCoin.ToString());
             FinalTotal.SetText("Total Coins: " + CurrentCoin.ToString());
+            Destroy(collision.gameObject);
         }
     }
     public void Update()

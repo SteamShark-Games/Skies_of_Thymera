@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1327887342861155826}
   - component: {fileID: 2415934318629979078}
   - component: {fileID: 1214473333286880395}
-  - component: {fileID: 3585109937355492071}
   m_Layer: 5
   m_Name: CoinDisplay
   m_TagString: Untagged
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3585109937355492071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437832186079454541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4df4ab8cd484341ab8b06fa2fc05f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentTotal: {fileID: 8783734265315717989}
 --- !u!1 &1414858820914061631
 GameObject:
   m_ObjectHideFlags: 0
