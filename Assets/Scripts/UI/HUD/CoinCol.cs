@@ -7,6 +7,7 @@ public class CoinCol : MonoBehaviour
 {
     // UI assets
     public TMP_Text CurrentTotal;
+    public TMP_Text FinalTotal;
 
     // Current coins 
     float CurrentCoin = 0.0f; 
@@ -19,6 +20,11 @@ public class CoinCol : MonoBehaviour
             //Destroy(Coin.gameObject); // Commented out till we add more around the level(s)
             Debug.Log(CurrentCoin);
             CurrentTotal.SetText("x " + CurrentCoin.ToString());
+            FinalTotal.SetText("Total Coins: " + CurrentCoin.ToString());
         }
+    }
+    public void Update()
+    {
+        FinalTotal.SetText("Total Coins: " + CurrentCoin.ToString());
     }
 }

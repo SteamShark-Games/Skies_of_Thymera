@@ -18,6 +18,8 @@ public class TimeCount : MonoBehaviour
     public GameObject Timer;
     public TMP_Text CurrentTimeDisplay;
     public float startTime = 120f;
+    float finalTime;
+    public TMP_Text FinalTime;
 
     private void Start()
     {
@@ -38,5 +40,6 @@ public class TimeCount : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
         CurrentTimeDisplay.text = string.Format("{0:00}:{1:00}", min, sec);
+        FinalTime.text = string.Format("Final Time: " + "{0:00}:{1:00}", min, sec);
     }
 }
