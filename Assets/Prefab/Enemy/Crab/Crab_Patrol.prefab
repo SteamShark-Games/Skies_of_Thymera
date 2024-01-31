@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3898671972929637852}
   m_Layer: 0
   m_Name: Crab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,9 +183,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009020696, y: 0.011327724}
-  m_Size: {x: 0.45735964, y: 0.59983623}
-  m_Direction: 1
+  m_Offset: {x: -0.011236305, y: 0.011327742}
+  m_Size: {x: 0.7061008, y: 0.59983647}
+  m_Direction: 0
 --- !u!114 &8965720525909612793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e76602a9353ee4ba4e6175dcc8c2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
 --- !u!1 &7386885634306371633
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,12 +46,12 @@ public class Health : MonoBehaviour
         }
     }
 
-    void PlayerDamaged()
+    public void PlayerDamaged()
     {
         CurrentHealth -= 1.0f;
     }
 
-    void PlayerHeal()
+    public void PlayerHeal()
     {
         CurrentHealth += 1.0f;
     }

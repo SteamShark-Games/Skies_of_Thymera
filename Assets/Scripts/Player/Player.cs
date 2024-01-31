@@ -12,9 +12,9 @@ public class Player : MonoBehaviour
     enum MovementState { idle, running, jumping, falling, melee, shoot }
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
+    public Health HealthBar;
 
     // Player Variables
-    public int health;
     public float speed = 8f;
     bool facingLeft;
     bool doubleJump;
@@ -190,9 +190,14 @@ public class Player : MonoBehaviour
             doubleJump = false;
             isGrounded = true;
         }
-        if (collision.CompareTag("ElevatorPlatform"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If the bullet collides with an Enemy, That Enemy takes damage;
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            
+            // bullet deals one damage to an Enemy
+            HealthBar.PlayerDamaged();
         }
     }
 
