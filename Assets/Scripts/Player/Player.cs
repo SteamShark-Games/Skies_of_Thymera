@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     bool facingLeft;
     bool doubleJump;
     public float jumpHeight = 20f;
-    bool isGrounded;
+    public bool isGrounded;
     float projectileSpeed = 15f;
 
     // Wall Silde
@@ -182,14 +182,14 @@ public class Player : MonoBehaviour
         return hitscan;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("ElevatorPlatform"))
+        if (collision.CompareTag("Ground") || collision.CompareTag("ElevatorPlatform"))
         {
             doubleJump = false;
             isGrounded = true;
         }
-        if (collision.gameObject.CompareTag("ElevatorPlatform"))
+        if (collision.CompareTag("ElevatorPlatform"))
         {
             
         }
