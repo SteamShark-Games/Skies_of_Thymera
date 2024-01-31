@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public GameObject MeleePrefab;
 
     // Player Variables
+    public int health;
     public float speed = 8f;
     bool facingLeft;
     bool doubleJump;

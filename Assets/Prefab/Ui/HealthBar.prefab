@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.6085, y: -1.2772}
-  m_SizeDelta: {x: 247.7505, y: 28.2064}
+  m_AnchoredPosition: {x: 42.2842, y: -1.5174}
+  m_SizeDelta: {x: 221.8043, y: 20.999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3680211995561683074
 CanvasRenderer:
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.6085, y: -1.2772}
-  m_SizeDelta: {x: 247.7505, y: 28.2064}
+  m_AnchoredPosition: {x: 42.2842, y: -1.5174}
+  m_SizeDelta: {x: 221.8043, y: 20.999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5146238563712967058
 CanvasRenderer:
@@ -184,8 +184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.6085, y: -1.2772}
-  m_SizeDelta: {x: 247.7505, y: 28.2064}
+  m_AnchoredPosition: {x: 42.2842, y: -1.5174}
+  m_SizeDelta: {x: 221.8043, y: 20.999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &134918268401073497
 CanvasRenderer:
@@ -259,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.6085, y: -1.2772}
-  m_SizeDelta: {x: 247.7505, y: 28.2064}
+  m_AnchoredPosition: {x: 42.2842, y: -1.5174}
+  m_SizeDelta: {x: 221.8043, y: 20.999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6112462520226183714
 CanvasRenderer:
@@ -334,8 +334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.6085, y: -1.2772}
-  m_SizeDelta: {x: 247.7505, y: 28.2064}
+  m_AnchoredPosition: {x: 42.2842, y: -1.5174}
+  m_SizeDelta: {x: 221.8043, y: 20.999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &492542247452468876
 CanvasRenderer:
@@ -403,7 +403,7 @@ RectTransform:
   m_GameObject: {fileID: 9055866860889035904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2475, y: 1.2475, z: 1.2475}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4684011003924579153}
@@ -469,9 +469,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 9055866860889035904}
-  HP1: {fileID: 2656978765742521085}
-  HP2: {fileID: 2954437985083029995}
-  HP3: {fileID: 3439651175872407377}
-  HP4: {fileID: 8224763578283616233}
-  HP5: {fileID: 3422293507383725109}
+  health:
+  - {fileID: 2656978765742521085}
+  - {fileID: 2954437985083029995}
+  - {fileID: 3439651175872407377}
+  - {fileID: 8224763578283616233}
+  - {fileID: 3422293507383725109}
   CurrentHealth: 5
