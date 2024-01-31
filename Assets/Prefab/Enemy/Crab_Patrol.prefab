@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 2044009426539440636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9, y: 1.9699998, z: -0.04796279}
+  m_LocalPosition: {x: 7.04, y: 1.9699998, z: -0.04796279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,9 +76,10 @@ GameObject:
   - component: {fileID: 3385080392308864971}
   - component: {fileID: 4428086987746755795}
   - component: {fileID: 8965720525909612793}
+  - component: {fileID: 3898671972929637852}
   m_Layer: 0
-  m_Name: JellyFish
-  m_TagString: Untagged
+  m_Name: Crab
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 4051720664712512590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4803072, y: 2.057993, z: 0}
+  m_LocalPosition: {x: 5.68, y: 2.057993, z: 0}
   m_LocalScale: {x: 3.5498586, y: 3.837093, z: 2.2565718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 438dc23b6e7d48b4e99f8e5dc04301f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5acfe4333d24ae42a8e604ffcda229e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,11 +180,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009020696, y: 0.011327724}
-  m_Size: {x: 0.45735964, y: 0.59983623}
+  m_Offset: {x: -0.011236305, y: 0.011327742}
+  m_Size: {x: 0.7061008, y: 0.59983647}
   m_Direction: 0
 --- !u!114 &8965720525909612793
 MonoBehaviour:
@@ -201,6 +202,19 @@ MonoBehaviour:
   - {fileID: 1583176297575161698}
   - {fileID: 4275250815143217136}
   speed: 2
+--- !u!114 &3898671972929637852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051720664712512590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e76602a9353ee4ba4e6175dcc8c2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
 --- !u!1 &7386885634306371633
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 7386885634306371633}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 1.9099998, z: -0.04796279}
+  m_LocalPosition: {x: -21.83, y: 1.9099998, z: -0.04796279}
   m_LocalScale: {x: -1.1875, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -242,8 +256,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5601822849977747464}
   m_Layer: 0
-  m_Name: Jellyfish_Patrol
-  m_TagString: Untagged
+  m_Name: Crab_Patrol
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

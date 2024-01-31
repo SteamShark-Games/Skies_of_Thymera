@@ -37,6 +37,6 @@ public class TimeCount : MonoBehaviour
             startTime = 0;
             SceneManager.LoadScene("GameOver");
         }
-        CurrentTimeDisplay.text = "Timer: " + string.Format("{0:00}:{1:00}", min, sec);
+        CurrentTimeDisplay.text = string.Format("{0:00}:{1:00}", min, sec);
     }
 }

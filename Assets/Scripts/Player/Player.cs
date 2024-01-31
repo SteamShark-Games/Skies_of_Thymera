@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -10,14 +12,21 @@ public class Player : MonoBehaviour
     enum MovementState { idle, running, jumping, falling, melee, shoot }
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
+    public Health HealthBar;
 
     // Player Variables
-    public bool isGrounded = false;
-    bool doubleJump;
     public float speed = 8f;
-    float projectileSpeed = 15f;
-    public float jumpHeight = 15f;
     bool facingLeft;
+    bool doubleJump;
+    public float jumpHeight = 20f;
+    public bool isGrounded;
+    float projectileSpeed = 15f;
+
+    // Wall Silde
+    bool isWallSliding;
+    float wallSlideSpeed;
+    public GameObject wallCheck;
+    public LayerMask walllayer;
 
     // Gravity Scales
     float light_gravityScale = 5f;
@@ -41,8 +50,15 @@ public class Player : MonoBehaviour
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D))
         {
-            // Sets X velocity to speed
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            if (!facingLeft && isKissingWall())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            }
+            else
+            {
+                // Sets X velocity to -speed
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
             state = MovementState.running;
             if (facingLeft)
             {
@@ -51,8 +67,15 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            // Sets X velocity to -speed
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            if (facingLeft && isKissingWall())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            }
+            else
+            {
+                // Sets X velocity to -speed
+                rb.velocity = new Vector2(-speed, rb.velocity.y);
+            }
             state = MovementState.running;
             if (!facingLeft)
             {
@@ -66,6 +89,7 @@ public class Player : MonoBehaviour
         }
 
         // ------ Jumping --------
+        // The longer you hold down space, the higher you go
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded || doubleJump)
@@ -76,9 +100,7 @@ public class Player : MonoBehaviour
                 doubleJump = !doubleJump;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
-            rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y * 0.5f);
-
+        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y * 0.5f);
 
         // ------- Attacks --------
 
@@ -125,13 +147,14 @@ public class Player : MonoBehaviour
             rb.gravityScale = light_gravityScale;
           
         }
-          if (rb.velocity.y > 1.5f)
-            {
-                state = MovementState.jumping;
-            }
+        if (rb.velocity.y > 1.5f)
+        {
+            state = MovementState.jumping;
+        }
 
         // Updating Animator per frame
         anim.SetInteger("state", (int)state);
+        WallSlide();
     }
 
     void Turn()
@@ -160,17 +183,35 @@ public class Player : MonoBehaviour
         return hitscan;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.CompareTag("Ground") || collision.CompareTag("ElevatorPlatform"))
         {
             doubleJump = false;
             isGrounded = true;
         }
-        if (collision.gameObject.CompareTag("ElevatorPlatform"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If the bullet collides with an Enemy, That Enemy takes damage;
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            
+            // bullet deals one damage to an Enemy
+            HealthBar.PlayerDamaged();
         }
     }
 
+    bool isKissingWall()
+    {
+        return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
+    }
+    void WallSlide()
+    {
+        if (isKissingWall() && !isGrounded)
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+        }
+        else isWallSliding = false;
+    }
 }

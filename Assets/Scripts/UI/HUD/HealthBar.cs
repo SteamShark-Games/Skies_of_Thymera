@@ -7,55 +7,51 @@ public class Health : MonoBehaviour
 {
     // UI assets
     public GameObject HealthBar;
-    public GameObject HP1;
-    public GameObject HP2;
-    public GameObject HP3;
-    public GameObject HP4;
-    public GameObject HP5;
+    public List<GameObject> health;
 
     // Floats
-    public float CurrentHealth = 5.0f;
+    float CurrentHealth = 5.0f;
 
     void Update()
     {
         if (CurrentHealth == 5.0f)
         {
-            HP5.SetActive(true);
+            health[4].SetActive(true);
         }
         else if (CurrentHealth == 4.0f)
         {
-            HP4.SetActive(true);
-            HP5.SetActive(false);
+            health[3].SetActive(true);
+            health[4].SetActive(false);
         }
         else if (CurrentHealth == 3.0f)
         {
-            HP3.SetActive(true);
-            HP4.SetActive(false);
+            health[2].SetActive(true);
+            health[3].SetActive(false);
         }
         else if (CurrentHealth == 2.0f)
         {
-            HP2.SetActive(true);
-            HP3.SetActive(false);
+            health[1].SetActive(true);
+            health[2].SetActive(false);
         }
         else if (CurrentHealth == 1.0f)
         {
-            HP1.SetActive(true);
-            HP2.SetActive(false);
+            health[0].SetActive(true);
+            health[1].SetActive(false);
         }
         // 
         if (CurrentHealth == 0.0f)
         {
-          HP1.SetActive(false);
-          SceneManager.LoadScene("GameOver");
+            health[0].SetActive(false);
+            SceneManager.LoadScene("GameOver");
         }
     }
 
-    void PlayerDamaged()
+    public void PlayerDamaged()
     {
         CurrentHealth -= 1.0f;
     }
 
-    void PlayerHeal()
+    public void PlayerHeal()
     {
         CurrentHealth += 1.0f;
     }
