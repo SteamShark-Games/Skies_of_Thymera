@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
 {
-    Vector3 offset = new Vector3 (0, 1.5f, -6f);
+    Vector3 offset = new Vector3 (0, 1.5f, -10f);
     float smoothFollowing = 0.05f;
     Vector3 vel = Vector3.zero;
 
