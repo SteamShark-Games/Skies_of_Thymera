@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         }
 
         // ---- Gravity --------
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 && !isGrounded)
         {
             state = MovementState.falling;
             rb.gravityScale = fallgravityScale;
