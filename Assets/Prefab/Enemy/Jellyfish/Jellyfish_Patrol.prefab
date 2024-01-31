@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1917210631645348595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4275250815143217136}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point B
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 2044009426539440636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9, y: 1.9699998, z: -0.04796279}
+  m_LocalPosition: {x: 7.04, y: 1.9699998, z: -0.04796279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 3385080392308864971}
   - component: {fileID: 4428086987746755795}
   - component: {fileID: 8965720525909612793}
-  m_Layer: 0
-  m_Name: JellyFish
+  m_Layer: 7
+  m_Name: Crab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 4051720664712512590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4803072, y: 2.057993, z: 0}
+  m_LocalPosition: {x: 5.68, y: 2.057993, z: 0}
   m_LocalScale: {x: 3.5498586, y: 3.837093, z: 2.2565718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 438dc23b6e7d48b4e99f8e5dc04301f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5acfe4333d24ae42a8e604ffcda229e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,7 +179,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.009020696, y: 0.011327724}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1583176297575161698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point A
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 7386885634306371633}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 1.9099998, z: -0.04796279}
+  m_LocalPosition: {x: -21.83, y: 1.9099998, z: -0.04796279}
   m_LocalScale: {x: -1.1875, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -241,9 +241,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5601822849977747464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jellyfish_Patrol
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
