@@ -36,10 +36,14 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource meleeSoundEffect;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Time.timeScale = 1f;
     }
 
     // Update is called once per frame

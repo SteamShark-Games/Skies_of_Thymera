@@ -8,27 +8,23 @@ public class GameController : MonoBehaviour
 {
     public GameObject LevelCompleteScene;
     public GameObject UI;
+    public GameObject Player;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Player>(out Player player))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            player.enabled = false;
             LevelCompleteScene.SetActive(true);
-            FadeOut();
+            StartCoroutine(Fade());
         }
     }
 
-    public void Start()
+    private IEnumerator Fade()
     {
-        Time.timeScale = 1f;
-    }
-
-    private async void FadeOut()
-    {
-        await Task.Delay(2500);
+        yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
         UI.SetActive(false);
+        Player.SetActive(false);
     }
 
     public void MenuButton()
@@ -47,6 +43,6 @@ public class GameController : MonoBehaviour
     public void ContinueButton()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TestingGrounds");
+        SceneManager.LoadScene("Level 2");
     }
 }
