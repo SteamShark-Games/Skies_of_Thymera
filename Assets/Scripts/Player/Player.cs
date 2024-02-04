@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
     {
         GameObject hitscan = Instantiate(MeleePrefab);
         hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + .7f, transform.position.z) + direction;;
-        Destroy(hitscan, 0.1f);
+        Destroy(hitscan, 0.3f);
         return hitscan;
     }
 
