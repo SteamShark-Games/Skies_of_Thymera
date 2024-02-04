@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If the bullet collides with an Enemy, That Enemy takes damage;
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("KillBox"))
         {
             // bullet deals one damage to an Enemy
             HealthBar.PlayerDamaged();
