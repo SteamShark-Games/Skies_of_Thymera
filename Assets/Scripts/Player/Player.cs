@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource jumpSoundEffect;
     [SerializeField] private AudioSource shootSoundEffect;
     [SerializeField] private AudioSource meleeSoundEffect;
+    [SerializeField] private AudioSource damagedSoundEffect;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -200,6 +201,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("KillBox"))
         {
             // bullet deals one damage to an Enemy
+            damagedSoundEffect.Play();
             HealthBar.PlayerDamaged();
         }
     }

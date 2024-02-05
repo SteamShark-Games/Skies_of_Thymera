@@ -5,9 +5,12 @@ using TMPro;
 
 public class CoinCol : MonoBehaviour
 {
+    
     // UI assets
     public TMP_Text CurrentTotal;
     public TMP_Text FinalTotal;
+
+    [SerializeField] private AudioSource collectionSoundEffect;
 
     // Current coins 
     float CurrentCoin = 0.0f; 
@@ -22,6 +25,7 @@ public class CoinCol : MonoBehaviour
             CurrentTotal.SetText("x " + CurrentCoin.ToString());
             FinalTotal.SetText("Total Coins: " + CurrentCoin.ToString());
             Destroy(collision.gameObject);
+            collectionSoundEffect.Play();
         }
     }
     public void Update()
