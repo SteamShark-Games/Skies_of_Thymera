@@ -12,6 +12,14 @@ public class Attack_Ranged_Hit : MonoBehaviour
             // bullet deals one damage to an Enemy
             enemy.TakeDamage(1);
         }
+
+        else if (collision.gameObject.TryGetComponent<BossUIBar>(out BossUIBar bossuibar))
+        {
+            // bullet deals one damage to boss (Updates BossUIBar)
+            bossuibar.TakeDamage(1);
+        }
         Destroy(gameObject);
     }
+
+
 }

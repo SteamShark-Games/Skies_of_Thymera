@@ -11,6 +11,7 @@ TagManager:
   - FallingPlatform
   - GroundCheck
   - KillBox
+  - BossUI
   layers:
   - Default
   - TransparentFX
