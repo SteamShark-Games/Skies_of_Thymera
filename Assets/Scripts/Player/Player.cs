@@ -198,18 +198,10 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If the bullet collides with an Enemy, That Enemy takes damage;
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("KillBox"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("KillBox") || collision.gameObject.CompareTag("Boss"))
         {
-            // bullet deals one damage to an Enemy
-            damagedSoundEffect.Play();
-            HealthBar.PlayerDamaged();
-        }
-
-        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("KillBox"))
-        {
-            // bullet deals one damage to a Boss
-            damagedSoundEffect.Play();
-            HealthBar.PlayerDamaged();
+            //Deals one damage to the player
+            TakingDamage();
         }
     }
 
@@ -225,5 +217,11 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
         }
         else isWallSliding = false;
+    }
+
+    void TakingDamage()
+    {
+        HealthBar.PlayerDamaged();
+        damagedSoundEffect.Play();
     }
 }
