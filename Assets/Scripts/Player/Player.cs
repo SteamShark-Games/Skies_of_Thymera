@@ -204,6 +204,13 @@ public class Player : MonoBehaviour
             damagedSoundEffect.Play();
             HealthBar.PlayerDamaged();
         }
+
+        if (collision.gameObject.CompareTag("Boss") || collision.gameObject.CompareTag("KillBox"))
+        {
+            // bullet deals one damage to a Boss
+            damagedSoundEffect.Play();
+            HealthBar.PlayerDamaged();
+        }
     }
 
     bool isKissingWall()

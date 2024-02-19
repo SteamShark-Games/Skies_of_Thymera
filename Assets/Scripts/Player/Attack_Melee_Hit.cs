@@ -12,6 +12,12 @@ public class Attack_Melee_Hit : MonoBehaviour
             // Sword deals three damage to an Enemy
             enemy.TakeDamage(3);
         }
+
+        else if (collision.gameObject.TryGetComponent<BossUIBar>(out BossUIBar bossuibar))
+        {
+            // Sword deals one damage to boss (Updates BossUIBar)
+            bossuibar.TakeDamage(3);
+        }
         Destroy(gameObject);
     }
 }

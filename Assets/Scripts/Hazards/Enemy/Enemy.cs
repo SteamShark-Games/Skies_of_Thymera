@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     float health;
     public float maxHealth;
 
-    private void Start()
+    public void Start()
     {
         health = maxHealth;
     }
