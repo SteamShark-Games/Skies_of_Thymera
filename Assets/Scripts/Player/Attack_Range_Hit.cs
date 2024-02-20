@@ -20,6 +20,4 @@ public class Attack_Ranged_Hit : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-
 }

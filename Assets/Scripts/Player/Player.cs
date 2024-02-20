@@ -227,9 +227,9 @@ public class Player : MonoBehaviour
         else isWallSliding = false;
     }
 
-    void TakingDamage()
+    public void TakingDamage()
     {
-        HealthBar.PlayerDamaged();
+        HealthBar.PlayerDamaged(1);
         damagedSoundEffect.Play();
     }
 }
