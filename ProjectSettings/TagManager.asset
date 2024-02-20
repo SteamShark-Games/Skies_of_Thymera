@@ -7,11 +7,12 @@ TagManager:
   - Ground
   - Coin
   - Enemy
-  - ElevatorPlatform
   - FallingPlatform
   - GroundCheck
   - KillBox
   - Boss
+  - Generator
+  - ElevatorPlatform
   layers:
   - Default
   - TransparentFX

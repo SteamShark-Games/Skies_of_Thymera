@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     // Player Variables
     public float speed = 8f;
-    Vector2 move;
+    //Vector2 move;
     bool facingLeft;
     bool doubleJump;
     public float jumpHeight = 20f;
