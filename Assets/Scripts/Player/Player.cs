@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     // Player Variables
     public float speed = 8f;
+    Vector2 move;
     bool facingLeft;
     bool doubleJump;
     public float jumpHeight = 20f;
@@ -45,10 +46,17 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /* For Later testing
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(move.x * speed * Time.deltaTime, rb.velocity.y);
+    }*/
+
     // Update is called once per frame
     void Update()
     {
         anim = GetComponent<Animator>();
+        //move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         MovementState state;
 
         // ---- Movement ------ 
@@ -60,7 +68,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                // Sets X velocity to -speed
+                // Sets X velocity to speed
                 rb.velocity = new Vector2(speed, rb.velocity.y);
             }
             state = MovementState.running;
@@ -89,7 +97,7 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
-            rb.velocity = new Vector2(0.0f , rb.velocity.y); 
+            rb.velocity = new Vector2(0.0f , rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
         }
 
         // ------ Jumping --------
