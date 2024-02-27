@@ -10,10 +10,11 @@ public class GameController : MonoBehaviour
     public GameObject UI;
     public GameObject Player;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.GetComponent<Player>().enabled = false;
             LevelCompleteScene.SetActive(true);
             StartCoroutine(Fade());
         }
@@ -42,7 +43,8 @@ public class GameController : MonoBehaviour
 
     public void ContinueButton()
     {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene(currentScene + 1);
     }
 }
