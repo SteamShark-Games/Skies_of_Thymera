@@ -6,14 +6,12 @@ using UnityEngine.UI;
 public class BossUIBar : MonoBehaviour
 {
     // UI assets
-    public GameObject Boss_Health;
-    public GameObject Boss_Name;
+    public GameObject bossHPBar;
     public List<GameObject> BossHealth;
 
     // Floats
     float health;
-    public float maxHealth;
-    //float maxHealth = 9.0f;
+    float maxHealth = 9.0f;
 
 
     public void Start()
@@ -77,7 +75,7 @@ public class BossUIBar : MonoBehaviour
         if (health <= 0.0f)
         {
             BossHealth[0].SetActive(false);
-            Boss_Health.SetActive(false);
+            bossHPBar.SetActive(false);
             Destroy(gameObject);
             Debug.Log("Boss Defeated!");
         }
