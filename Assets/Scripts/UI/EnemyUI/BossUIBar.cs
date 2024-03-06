@@ -11,7 +11,7 @@ public class BossUIBar : MonoBehaviour
 
     // Floats
     float health;
-    float maxHealth = 9.0f;
+    float maxHealth = 8.0f;
 
 
     public void Start()
@@ -24,14 +24,9 @@ public class BossUIBar : MonoBehaviour
     {
         health -= damageAmount;
 
-        if (health == 9.0f)
+        if (health == 8.0f)
         {
-            //Debug.Log("Current Health: 9");
             Debug.Log("Boss Engaged!");
-        }
-        else if (health == 8.0f)
-        {
-            BossHealth[8].SetActive(false);
             //Debug.Log("Current Health: 8");
         }
         else if (health == 7.0f)
@@ -71,7 +66,7 @@ public class BossUIBar : MonoBehaviour
             BossHealth[1].SetActive(false);
             //Debug.Log("Current Health: 1");
         }
-        // 
+        
         if (health <= 0.0f)
         {
             BossHealth[0].SetActive(false);
