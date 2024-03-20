@@ -59,6 +59,10 @@ public class Player : MonoBehaviour
         //move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         MovementState state;
 
+        // ---- Joystick Movement ----
+        float horiz = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horiz * speed, rb.velocity.y);
+
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D))
         {
@@ -97,12 +101,12 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
-            rb.velocity = new Vector2(0.0f , rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
+            rb.velocity = new Vector2(0.0f, rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
         }
 
         // ------ Jumping --------
         // The longer you hold down space, the higher you go
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("JoystickJump"))
         {
             if (isGrounded || doubleJump)
             {
@@ -112,11 +116,11 @@ public class Player : MonoBehaviour
                 doubleJump = !doubleJump;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y * 0.5f);
+        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
         // ------- Attacks --------
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("JoystickRanged"))
         {
             // If the player is facing left, shoot left
             shootSoundEffect.Play();
@@ -129,10 +133,10 @@ public class Player : MonoBehaviour
             {
                 Shoot(transform.right, projectileSpeed);
             }
-             state = MovementState.shoot;
+            state = MovementState.shoot;
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("JoystickMelee"))
         {
             // If the player is facing left, Swing left
             meleeSoundEffect.Play();
