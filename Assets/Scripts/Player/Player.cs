@@ -31,14 +31,13 @@ public class Player : MonoBehaviour
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
-    [SerializeField] private AudioSource jumpSoundEffect;
-    [SerializeField] private AudioSource shootSoundEffect;
-    [SerializeField] private AudioSource meleeSoundEffect;
-    [SerializeField] private AudioSource damagedSoundEffect;
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     private void Awake()
     {
-        Time.timeScale = 1f;
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    Time.timeScale = 1f;
     }
 
     void Start()
@@ -103,11 +102,13 @@ public class Player : MonoBehaviour
         // ------ Jumping --------
         // The longer you hold down space, the higher you go
         if (Input.GetKeyDown(KeyCode.Space))
+            
         {
+            audioManager.PlaySFX(audioManager.jump);
             if (isGrounded || doubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                jumpSoundEffect.Play();
+                
                 isGrounded = false;
                 doubleJump = !doubleJump;
             }
@@ -117,9 +118,10 @@ public class Player : MonoBehaviour
         // ------- Attacks --------
 
         if (Input.GetMouseButtonDown(0))
+           
         {
             // If the player is facing left, shoot left
-            shootSoundEffect.Play();
+             audioManager.PlaySFX(audioManager.shoot);
             if (facingLeft)
             {
                 Shoot(-transform.right, projectileSpeed);
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             // If the player is facing left, Swing left
-            meleeSoundEffect.Play();
+            audioManager.PlaySFX(audioManager.melee);
             if (facingLeft)
             {
                 Melee(-transform.right);
@@ -229,7 +231,8 @@ public class Player : MonoBehaviour
 
     public void TakingDamage()
     {
+        audioManager.PlaySFX(audioManager.hurt);
         HealthBar.PlayerDamaged(1);
-        damagedSoundEffect.Play();
+        
     }
 }

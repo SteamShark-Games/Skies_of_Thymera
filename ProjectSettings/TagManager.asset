@@ -13,6 +13,7 @@ TagManager:
   - Boss
   - Generator
   - ElevatorPlatform
+  - Audio
   layers:
   - Default
   - TransparentFX

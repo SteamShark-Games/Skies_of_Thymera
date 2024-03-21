@@ -10,11 +10,16 @@ public class CoinCol : MonoBehaviour
     public TMP_Text CurrentTotal;
     public TMP_Text FinalTotal;
 
-    [SerializeField] private AudioSource collectionSoundEffect;
+    AudioManager audioManager;
 
     // Current coins 
-    float CurrentCoin = 0.0f; 
+    float CurrentCoin = 0.0f;
 
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Coin"))
@@ -25,7 +30,7 @@ public class CoinCol : MonoBehaviour
             CurrentTotal.SetText("x " + CurrentCoin.ToString());
             FinalTotal.SetText("Total Coins: " + CurrentCoin.ToString());
             Destroy(collision.gameObject);
-            collectionSoundEffect.Play();
+            audioManager.PlaySFX(audioManager.coin);
         }
     }
     public void Update()
