@@ -61,10 +61,10 @@ public class Player : MonoBehaviour
 
         // ---- Joystick Movement ----
         float horiz = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horiz * speed, rb.velocity.y);
+        
 
         // ---- Movement ------ 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || horiz == 1.00)
         {
             if (!facingLeft && isKissingWall())
             {
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
                 Turn();
             }
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || horiz == -1.00)
         {
             if (facingLeft && isKissingWall())
             {
