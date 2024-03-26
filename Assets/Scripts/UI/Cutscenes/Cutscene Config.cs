@@ -42,6 +42,8 @@ public class CutsceneConfig : DialogueViewBase
         }
     }
 
+    // Makes commands that can be called in a yarnspinner script to do functions as well as in this script
+    // Used to edit and transition player to new scene either after it is skipped or finished
     [YarnCommand("FinishCutscene")]
     public void FinishCutscene()
     {
@@ -49,6 +51,7 @@ public class CutsceneConfig : DialogueViewBase
         SceneManager.LoadScene(sceneName);
     }
 
+    // Sets all cutscene images and make them inactive until called in the yarnspinner script to be active
     [YarnCommand("ShowImage")]
     public void ShowImage(string filename)
     {
@@ -56,6 +59,7 @@ public class CutsceneConfig : DialogueViewBase
         imageDict[filename].SetActive(true);
     }
 
+    // Finds all images for cutscene and adds them to a dictionary for the yarnspinner script to display
     void Start()
     {
         foreach (Transform child in transform) imageDict.Add(child.gameObject.name, child.gameObject);
@@ -70,7 +74,7 @@ public class CutsceneConfig : DialogueViewBase
             UserRequestedViewAdvancement();
         }
 
-        // Allows player to skip starting curscene by pressing both methods of the pause button
+        // Allows player to skip starting cutscene by pressing both methods of the pause button
         if (Input.GetKeyDown(KeyCode.Escape) || (Input.GetButtonDown("JoystickPause")))
         {
             skipCutscene++;
