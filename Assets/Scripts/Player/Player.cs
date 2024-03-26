@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     float projectileSpeed = 15f;
 
     // Wall Silde
+    float clampedFall = 10f;
     bool isWallSliding;
     float wallSlideSpeed;
     public GameObject wallCheck;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     /* For Later testing
@@ -65,11 +67,12 @@ public class Player : MonoBehaviour
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D) || horiz == 1.00)
         {
-            if (!facingLeft && isKissingWall())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            }
-            else
+            //if (!facingLeft && isKissingWall())
+            //{
+            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            //}
+            //else
+            if (!facingLeft)
             {
                 // Sets X velocity to speed
                 rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -82,11 +85,12 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A) || horiz == -1.00)
         {
-            if (facingLeft && isKissingWall())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            }
-            else
+            //if (facingLeft && isKissingWall())
+            //{
+            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            //}
+            //else
+            if (facingLeft)
             {
                 // Sets X velocity to -speed
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
@@ -170,7 +174,7 @@ public class Player : MonoBehaviour
 
         // Updating Animator per frame
         anim.SetInteger("state", (int)state);
-        WallSlide();
+        //WallSlide();
     }
 
     void Turn()
@@ -216,21 +220,22 @@ public class Player : MonoBehaviour
             TakingDamage();
         }
     }
-
-    bool isKissingWall()
-    {
-        return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
-    }
-    void WallSlide()
-    {
-        if (isKissingWall() && !isGrounded)
-        {
-            isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
-        }
-        else isWallSliding = false;
-    }
-
+    // Note: No time to make it useful
+    //bool isKissingWall()
+    //{
+    //    return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
+    //}
+    //
+    //void WallSlide()
+    //{
+    //    if (isKissingWall() && !isGrounded)
+    //    {
+    //        isWallSliding = true;
+    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+    //    }
+    //    else isWallSliding = false;
+    //}
+    
     public void TakingDamage()
     {
         audioManager.PlaySFX(audioManager.hurt);
