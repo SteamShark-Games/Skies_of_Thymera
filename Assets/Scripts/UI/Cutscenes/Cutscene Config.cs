@@ -5,13 +5,15 @@ using Yarn.Unity;
 using System;
 using UnityEngine.SceneManagement;
 
-public class StartCutsceneConfig : DialogueViewBase
+public class CutsceneConfig : DialogueViewBase
 {
     [SerializeField] RectTransform container;
     [SerializeField] TMPro.TextMeshProUGUI text;
     Action advanceHandler;
 
     float skipCutscene = 0;
+    public string sceneName = "Level 1";
+    Dictionary<string, GameObject> imageDict = new Dictionary <string, GameObject>();
 
 
     // Active run line for dialogue and requests player input from controls to continue dialogue
@@ -28,7 +30,6 @@ public class StartCutsceneConfig : DialogueViewBase
     {
         container.gameObject.SetActive(false);
         onDismissalComplete();
-        FinishCutscene();
     }
 
 
@@ -41,18 +42,30 @@ public class StartCutsceneConfig : DialogueViewBase
         }
     }
 
-    // Once the cutscene is finished or skipped, brings player to Level 1
+    [YarnCommand("FinishCutscene")]
     public void FinishCutscene()
     {
-        SceneManager.LoadScene("Level 1");
+        Debug.Log("Switching to " + sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
+    [YarnCommand("ShowImage")]
+    public void ShowImage(string filename)
+    {
+        foreach (Transform child in transform) child.gameObject.SetActive(false);
+        imageDict[filename].SetActive(true);
+    }
+
+    void Start()
+    {
+        foreach (Transform child in transform) imageDict.Add(child.gameObject.name, child.gameObject);
+    }
 
 
     void Update()
     {
         // Allows keyboard/controller input to continue reading text
-        if (Input.GetKey(KeyCode.Space) || (Input.GetButtonDown("JoystickConfirm")))
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetButtonDown("JoystickConfirm")))
         {
             UserRequestedViewAdvancement();
         }
@@ -63,7 +76,7 @@ public class StartCutsceneConfig : DialogueViewBase
             skipCutscene++;
 
             // Needs two inputs to skip cutscene, in place for extra confirmation or player error
-            if (skipCutscene <= 2)
+            if (skipCutscene >= 2)
             {
                 FinishCutscene();
             }
