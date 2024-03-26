@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     float projectileSpeed = 15f;
 
+
+    // Note: I'll add later
     // Wall Silde
-    float clampedFall = 10f;
-    bool isWallSliding;
-    float wallSlideSpeed;
-    public GameObject wallCheck;
-    public LayerMask walllayer;
+    //float clampedFall = 10f;
+    //bool isWallSliding;
+    //float wallSlideSpeed;
+    //public GameObject wallCheck;
+    //public LayerMask walllayer;
 
     // Gravity Scales
     float light_gravityScale = 5f;

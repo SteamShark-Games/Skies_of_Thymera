@@ -24,12 +24,7 @@ public class BossUIBar : MonoBehaviour
     {
         health -= damageAmount;
 
-        if (health == 8.0f)
-        {
-            Debug.Log("Boss Engaged!");
-            //Debug.Log("Current Health: 8");
-        }
-        else if (health == 7.0f)
+        if (health == 7.0f)
         {
             BossHealth[7].SetActive(false);
             //Debug.Log("Current Health: 7");
@@ -71,13 +66,8 @@ public class BossUIBar : MonoBehaviour
         {
             BossHealth[0].SetActive(false);
             bossHPBar.SetActive(false);
-            Destroy(gameObject);
             Debug.Log("Boss Defeated!");
         }
     }
-
-
-    // will be making things such as 'boss name' and activating once it is in range of a boss
-    //gonna do those once i return in a few hours, posting it though just to let you guys see it! (apologies for the wait!)
 
 }

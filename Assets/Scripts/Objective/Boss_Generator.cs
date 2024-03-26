@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Boss_Generator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    float health;
+    public float maxHealth;
+    Color currentColor;
+    float timeWhenHit;
+    public bool hit;
+
+    public void Start()
     {
-        
+        health = maxHealth;
+        currentColor = GetComponent<SpriteRenderer>().color;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float damageAmount)
     {
-        
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+
 }
