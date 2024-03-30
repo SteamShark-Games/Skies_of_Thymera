@@ -51,6 +51,7 @@ public class CutsceneConfig : DialogueViewBase
         SceneManager.LoadScene(sceneName);
     }
 
+
     // Sets all cutscene images and make them inactive until called in the yarnspinner script to be active
     [YarnCommand("ShowImage")]
     public void ShowImage(string filename)
@@ -64,7 +65,6 @@ public class CutsceneConfig : DialogueViewBase
     {
         foreach (Transform child in transform) imageDict.Add(child.gameObject.name, child.gameObject);
     }
-
 
     void Update()
     {
