@@ -20,7 +20,6 @@ public class Boss_Generator : MonoBehaviour
     {
         if (shieldOn) currentColor = Color.blue;
         else currentColor = startColor;
-
     }
 
     public void TakeDamage(float damageAmount)
@@ -31,7 +30,7 @@ public class Boss_Generator : MonoBehaviour
             currentColor = Color.red;
             if (health <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

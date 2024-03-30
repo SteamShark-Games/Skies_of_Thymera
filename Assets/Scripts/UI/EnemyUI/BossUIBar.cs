@@ -27,14 +27,14 @@ public class BossUIBar : MonoBehaviour
         if (batteries.Length == 0) 
         {
             ShieldOn = false;
-
+            Debug.Log("Boss can be damaged");
         }
     }
 
 
     public void TakeDamage(float damageAmount)
     {
-        if (ShieldOn == false)
+        if (!ShieldOn)
         {
             health -= damageAmount;
 
