@@ -1429,7 +1429,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 0.5283019, g: 0.042363837, b: 0.042363837, a: 1}
+  m_Color: {r: 0.5294118, g: 0.050980397, b: 0.050980397, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4504,7 +4504,7 @@ GameObject:
   - component: {fileID: 1617070165}
   - component: {fileID: 1617070167}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Boss Attack_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4591,6 +4591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossAttackPrefab: {fileID: 6343385347114414080, guid: 7802cb62d48d43048b7785f045f92fde, type: 3}
   player: {fileID: 1610212729}
+  interval: 1.5
 --- !u!1 &1645523522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6050,11 +6051,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2494791558110549503, guid: 7802cb62d48d43048b7785f045f92fde, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.22
+      value: 18.04
       objectReference: {fileID: 0}
     - target: {fileID: 2494791558110549503, guid: 7802cb62d48d43048b7785f045f92fde, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.86
+      value: -2.4929
       objectReference: {fileID: 0}
     - target: {fileID: 2494791558110549503, guid: 7802cb62d48d43048b7785f045f92fde, type: 3}
       propertyPath: m_LocalPosition.z

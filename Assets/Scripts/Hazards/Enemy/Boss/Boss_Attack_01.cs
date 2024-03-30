@@ -15,7 +15,7 @@ public class Boss_Attack_01 : MonoBehaviour
     public GameObject bossAttackPrefab; // Assign the boss attack prefab in the Inspector
     public GameObject player; // Assign the player GameObject in the Inspector
     private float timer = 0f;
-    public float interval = 2f;
+    public float interval;
 
     void Start()
     {
@@ -93,7 +93,7 @@ public class Boss_Attack_01 : MonoBehaviour
         {
             Vector3 closestPoint = GetClosestPointOnLine(player.transform.position);
             GameObject Tentacle = Instantiate(bossAttackPrefab, closestPoint, Quaternion.identity);
-            Destroy(Tentacle, 1f);
+            Destroy(Tentacle, 3f);
         }
     }
 }
