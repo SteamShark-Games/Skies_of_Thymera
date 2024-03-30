@@ -1,0 +1,12 @@
+{
+  "projectFileVersion": 2,
+  "sourceFiles": [
+    "EndCutscene.yarn"
+  ],
+  "excludeFiles": [
+    "**/*~/*"
+  ],
+  "localisation": {},
+  "baseLanguage": "en",
+  "compilerOptions": {}
+}

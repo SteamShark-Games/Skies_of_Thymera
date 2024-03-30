@@ -1,26 +1,28 @@
 ﻿title: EndCutscene
 ---
-: The captain now stand dominantly before the man working alongside the mechanical creatures now defeated and exhausted upon the metallic floor.
-: The man's hat falls from his low-hanging head to reveal the figure behind all of his trouble ready to meet his end.
-// Next scene
-: The captain's sword arm was raised to deal the finishing blow until he hesitated from a shocking realization now apparent to him.
-: The man he would strike down had a face and head of hair identical to his own as if they were his own reflection.
-// Next scene
-: The captain stumbled back from this unreal circumstance until the whiring of heavy machinery began to reverberate through the room.
-// Next scene
-: The mechanical octopus caught the captain off-gaurd quickly knocking the captain to the ground.
-: Its mechanical tendrils wrapped around his doppleganger and brough him upon the top of its chasis.
-// Next scene
-: The doppleganger quickly put his hat rightfully upon his head and pulled out his pocketwatch embedded with a familiar gemstone.
-: The doppleganger raised his hand once again to the sky with the familiar gold pocketwatch as its embedded gemstone began to glow miraculously.
-: The mechanical octopus' core began to glow in unison as the world began to glow and fill the steel chamber with blinding light.
-// Next scene
-: The captain felt he had seen this light before as the memories began rushing back into his mind of the bright light he saw that day when he fell from the sky.
-// Next scene
-: The captain vision returned to now see only himself left in the chamber alone with only his thoughts.
-: He couldn't just let this doppleganger run rampant yet again so he did teh only thing he could do and follow them.
-// Next scene
-: He pulled out his pocketwatch and mimiced what his doppleganger had done to teh same effect as the gemstone began to glow and with the remaining gemstones.
-: His vision began to fill with a bright light, he would go back to the time where he was attacked and prevent this threat from terrorizing the skies.
-: ... No matter how many times it took.
+<<ShowImage Canvas_Cutscene Image1>>
+The captain now stand dominantly before the man working alongside the mechanical creatures now defeated and exhausted upon the metallic floor.
+The man's hat falls from his low-hanging head to reveal the figure behind all of his trouble ready to meet his end.
+<<ShowImage Canvas_Cutscene Image2>>
+The captain's sword arm was raised to deal the finishing blow until he hesitated from a shocking realization now apparent to him.
+The man he would strike down had a face and head of hair identical to his own as if they were his own reflection.
+<<ShowImage Canvas_Cutscene Image3>>
+The captain stumbled back from this unreal circumstance until the whiring of heavy machinery began to reverberate through the room.
+<<ShowImage Canvas_Cutscene Image4>>
+The mechanical octopus caught the captain off-gaurd quickly knocking the captain to the ground.
+Its mechanical tendrils wrapped around his doppleganger and brough him upon the top of its chasis.
+<<ShowImage Canvas_Cutscene Image5>>
+The doppleganger quickly put his hat rightfully upon his head and pulled out his pocketwatch embedded with a familiar gemstone.
+The doppleganger raised his hand once again to the sky with the familiar gold pocketwatch as its embedded gemstone began to glow miraculously.
+The mechanical octopus' core began to glow in unison as the world began to glow and fill the steel chamber with blinding light.
+<<ShowImage Canvas_Cutscene Image6>>
+The captain felt he had seen this light before as the memories began rushing back into his mind of the bright light he saw that day when he fell from the sky.
+<<ShowImage Canvas_Cutscene Image7>>
+The captain vision returned to now see only himself left in the chamber alone with only his thoughts.
+He couldn't just let this doppleganger run rampant yet again so he did teh only thing he could do and follow them.
+<<ShowImage Canvas_Cutscene Image8>>
+He pulled out his pocketwatch and mimiced what his doppleganger had done to teh same effect as the gemstone began to glow and with the remaining gemstones.
+His vision began to fill with a bright light, he would go back to the time where he was attacked and prevent this threat from terrorizing the skies.
+... No matter how many times it took.
+<<FinishCutscene Canvas_Cutscene>>
 ===
