@@ -11,8 +11,7 @@ public class Battery_Logic : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) ToggleBatteryShields();
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) ResetBatteries();
-        
+        if (Input.GetKeyDown(KeyCode.Alpha2)) ResetBatteries();   
     }
 
     void ToggleBatteryShields()
@@ -42,5 +41,4 @@ public class Battery_Logic : MonoBehaviour
         }
         Debug.Log("Batteries Reset");
     }
-
 }
