@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class Boss_Generator : MonoBehaviour
 {
-    float health;
+    public float health;
     public float maxHealth;
     Color currentColor;
-    float timeWhenHit;
-    public bool hit;
+    Color startColor;
+    public bool shieldOn;
 
     public void Start()
     {
         health = maxHealth;
-        currentColor = GetComponent<SpriteRenderer>().color;
+        startColor = GetComponent<SpriteRenderer>().color;
+    }
+
+    private void Update()
+    {
+        if (shieldOn) currentColor = Color.blue;
+        else currentColor = startColor;
+
     }
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
-        if (health <= 0)
+        if (!shieldOn)
         {
-            Destroy(gameObject);
+            health -= damageAmount;
+            currentColor = Color.red;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

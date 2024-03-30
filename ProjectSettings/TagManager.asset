@@ -14,6 +14,7 @@ TagManager:
   - Generator
   - ElevatorPlatform
   - Audio
+  - Battery
   layers:
   - Default
   - TransparentFX

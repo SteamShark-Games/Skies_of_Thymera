@@ -693,6 +693,20 @@ MonoBehaviour:
   - {fileID: 2093291752}
   - {fileID: 565036913}
   - {fileID: 647918838}
+  ShieldOn: 0
+--- !u!114 &272809677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272809672}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4a6e2a61b455e4194202bd8334e2c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss_Generator: {fileID: 0}
 --- !u!224 &311095139 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3377221187081799093, guid: 2e8550073bada7f40b8fcd5ba4e6553c, type: 3}
@@ -1172,7 +1186,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453467480}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1197,8 +1211,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.0000001, y: 1}
+  m_Offset: {x: 0.011538524, y: 0.026036022}
+  m_Size: {x: 0.3134638, y: 0.3536769}
   m_Direction: 0
 --- !u!114 &453467483
 MonoBehaviour:
@@ -1207,14 +1221,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453467480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d66037bab84c1a40a3ce78cc871137f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1610212729}
   followSpeed: 0.2
-  detectionRad: 5
+  detectionRad: 20
 --- !u!114 &453467484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,6 +1251,7 @@ MonoBehaviour:
   - {fileID: 2093291752}
   - {fileID: 565036913}
   - {fileID: 647918838}
+  ShieldOn: 0
 --- !u!212 &453467485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3991,6 +4006,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7673541687511676595, guid: b40de09af0aeab7419287498418d0c1a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 272809676}
+    - targetCorrespondingSourceObject: {fileID: 7673541687511676595, guid: b40de09af0aeab7419287498418d0c1a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 272809677}
   m_SourcePrefab: {fileID: 100100000, guid: b40de09af0aeab7419287498418d0c1a, type: 3}
 --- !u!1 &1610212729 stripped
 GameObject:
@@ -5343,8 +5361,8 @@ GameObject:
   - component: {fileID: 2040586503408766025}
   - component: {fileID: 8889543107069864833}
   m_Layer: 0
-  m_Name: Generator
-  m_TagString: Generator
+  m_Name: Battery
+  m_TagString: Battery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5391,7 +5409,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.018810872, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.21511793, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5455,7 +5473,7 @@ Transform:
   m_GameObject: {fileID: 889430409621178587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.99, y: -6.81, z: 0}
+  m_LocalPosition: {x: -8.983, y: -7.185, z: 0}
   m_LocalScale: {x: 0.6163924, y: 1.0547678, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5473,8 +5491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21ef72c4b5997d4aaa03a5b3a1cc5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  hit: 0
+  health: 0
+  maxHealth: 5
+  shieldOn: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
