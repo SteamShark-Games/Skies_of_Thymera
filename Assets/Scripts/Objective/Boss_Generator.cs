@@ -9,17 +9,27 @@ public class Boss_Generator : MonoBehaviour
     Color currentColor;
     Color startColor;
     public bool shieldOn;
+    SpriteRenderer spriteRenderer;
 
     public void Start()
     {
         health = maxHealth;
-        startColor = GetComponent<SpriteRenderer>().color;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        startColor = spriteRenderer.color;
+        currentColor = startColor;
     }
 
     private void Update()
     {
-        if (shieldOn) currentColor = Color.blue;
-        else currentColor = startColor;
+        if (shieldOn)
+        {
+            currentColor = Color.blue;
+        }
+        else if (!shieldOn && health == maxHealth)
+        {
+            currentColor = startColor;
+        }
+        spriteRenderer.color = currentColor;
     }
 
     public void TakeDamage(float damageAmount)
@@ -28,11 +38,12 @@ public class Boss_Generator : MonoBehaviour
         {
             health -= damageAmount;
             currentColor = Color.red;
+            spriteRenderer.color = currentColor;
             if (health <= 0)
             {
                 gameObject.SetActive(false);
             }
         }
     }
-
 }
+

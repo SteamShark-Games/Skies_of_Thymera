@@ -7,6 +7,13 @@ public class Battery_Logic : MonoBehaviour
     public List<GameObject> Batteries;
     public bool On_Off_toggle;
 
+    public static Battery_Logic instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) ToggleBatteryShields();
@@ -14,7 +21,7 @@ public class Battery_Logic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) ResetBatteries();   
     }
 
-    void ToggleBatteryShields()
+    public void ToggleBatteryShields()
     {
         foreach (GameObject battery in Batteries)
         {
@@ -27,7 +34,7 @@ public class Battery_Logic : MonoBehaviour
         }
     }
 
-    void ResetBatteries()
+    public void ResetBatteries()
     {
         foreach (GameObject battery in Batteries)
         { 

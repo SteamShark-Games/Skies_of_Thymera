@@ -14,6 +14,7 @@ public class BossUIBar : MonoBehaviour
     float maxHealth = 8.0f;
     public bool ShieldOn;
 
+    public Battery_Logic battery;
 
     public void Start()
     {
@@ -40,39 +41,33 @@ public class BossUIBar : MonoBehaviour
             if (health == 7.0f)
             {
                 BossHealth[7].SetActive(false);
-                //Debug.Log("Current Health: 7");
             }
             else if (health == 6.0f)
             {
                 BossHealth[6].SetActive(false);
-                //Debug.Log("Current Health: 6");
 
             }
             else if (health == 5.0f)
             {
                 BossHealth[5].SetActive(false);
-                //Debug.Log("Current Health: 5");
             }
             else if (health == 4.0f)
             {
                 BossHealth[4].SetActive(false);
-                //Debug.Log("Current Health: 4");
+                Battery_Logic.instance.ResetBatteries();
+                // Half Health
             }
             else if (health == 3.0f)
             {
                 BossHealth[3].SetActive(false);
-                //Debug.Log("Current Health: 3");
             }
             else if (health == 2.0f)
             {
                 BossHealth[2].SetActive(false);
-                //Debug.Log("Current Health: 2");
-
             }
             else if (health == 1.0f)
             {
                 BossHealth[1].SetActive(false);
-                //Debug.Log("Current Health: 1");
             }
             
             if (health <= 0.0f)
