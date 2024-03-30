@@ -5,7 +5,6 @@ using UnityEngine;
 public class Battery_Logic : MonoBehaviour
 {
     public List<GameObject> Batteries;
-    public bool On_Off_toggle;
 
     public static Battery_Logic instance;
 
