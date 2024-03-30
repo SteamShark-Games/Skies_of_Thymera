@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6837021063115085886}
   - component: {fileID: 8315319875914401863}
   - component: {fileID: 3781946235591808457}
+  - component: {fileID: -8707056187366431009}
   m_Layer: 0
   m_Name: Jellyfish_Follow
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.471214, y: -0.109491706, z: 4.648268}
-  m_LocalScale: {x: 1.9287801, y: 1.8267648, z: 1}
+  m_LocalScale: {x: 2.1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -150,3 +151,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+--- !u!95 &-8707056187366431009
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368699353293137904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 172392f5257ac154ea1a0470ac8a254d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
