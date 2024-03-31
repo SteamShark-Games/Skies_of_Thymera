@@ -11,6 +11,9 @@ public class Boss_Generator : MonoBehaviour
     public bool shieldOn;
     SpriteRenderer spriteRenderer;
 
+    float timer = 0f;
+    float inv = 2f;
+
     public void Start()
     {
         health = maxHealth;
@@ -30,7 +33,15 @@ public class Boss_Generator : MonoBehaviour
             currentColor = startColor;
         }
         spriteRenderer.color = currentColor;
+
+        timer += Time.deltaTime;
+        if (timer >= inv)
+        {
+            shieldOn = false;
+            timer = 0f;
+        }
     }
+
 
     public void TakeDamage(float damageAmount)
     {

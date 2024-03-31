@@ -6,18 +6,9 @@ public class Attack_Melee_Hit : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // If the Sword collides with an Enemy, That Enemy takes damage;
-        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            // Sword deals three damage to an Enemy
-            enemy.TakeDamage(3);
-        }
-
-        else if (collision.gameObject.TryGetComponent<BossUIBar>(out BossUIBar bossuibar))
-        {
-            // Sword deals one damage to boss (Updates BossUIBar)
-            bossuibar.TakeDamage(3);
-        }
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) enemy.TakeDamage(3);
+        else if (collision.gameObject.TryGetComponent<BossUIBar>(out BossUIBar bossuibar)) bossuibar.TakeDamage(1);
+        else if (collision.gameObject.TryGetComponent<Boss_Generator>(out Boss_Generator genrator)) genrator.TakeDamage(3);
         Destroy(gameObject);
     }
 }

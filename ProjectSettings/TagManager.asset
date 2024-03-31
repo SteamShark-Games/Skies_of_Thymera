@@ -15,6 +15,7 @@ TagManager:
   - ElevatorPlatform
   - Audio
   - Battery
+  - CameraZone
   layers:
   - Default
   - TransparentFX
