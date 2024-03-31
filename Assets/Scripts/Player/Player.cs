@@ -240,8 +240,8 @@ public class Player : MonoBehaviour
     
     public void TakingDamage()
     {
-        audioManager.PlaySFX(audioManager.hurt);
         HealthBar.PlayerDamaged(1);
+        audioManager.PlaySFX(audioManager.hurt);
         
     }
 }

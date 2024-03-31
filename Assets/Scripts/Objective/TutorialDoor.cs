@@ -12,7 +12,6 @@ public class TutorialDoor : MonoBehaviour
         // If no generators are found, destroy this GameObject
         if (tutorialGen.Length == 0)
         {
-
             Destroy(gameObject);
         }
     }
