@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public CinemachineVirtualCamera primary;
     public CinemachineVirtualCamera secondary;
     private void OnTriggerEnter2D(Collider2D collision)
     {
