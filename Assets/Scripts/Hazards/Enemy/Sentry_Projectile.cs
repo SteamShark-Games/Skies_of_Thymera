@@ -12,7 +12,7 @@ public class Sentry_Projectile : MonoBehaviour
         {
             //Projectile deals one damage to the player
             Destroy(gameObject);
-            player.TakingDamage();
+            if (collision.gameObject.TryGetComponent<Player>(out Player player)) player.TakingDamage();
         }
         Destroy(gameObject);
     }
