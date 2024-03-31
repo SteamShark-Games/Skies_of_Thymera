@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerTestground : MonoBehaviour
 {
     // References
     Rigidbody2D rb;
@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     enum MovementState { idle, running, jumping, falling, melee, shoot }
     public GameObject BulletPrefab;
     public GameObject MeleePrefab;
-    public Health HealthBar;
 
     // Player Variables
     public float speed = 8f;
@@ -34,19 +33,17 @@ public class Player : MonoBehaviour
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
 
-    AudioManager audioManager;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        if (audioManager != null) audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         Time.timeScale = 1f;
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
 
     /* For Later testing
@@ -62,12 +59,8 @@ public class Player : MonoBehaviour
         //move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         MovementState state;
 
-        // ---- Joystick Movement ----
-        float horiz = Input.GetAxis("Horizontal");
-        
-
         // ---- Movement ------ 
-        if (Input.GetKey(KeyCode.D) || horiz == 1.00)
+        if (Input.GetKey(KeyCode.D))
         {
             //if (!facingLeft && isKissingWall())
             //{
@@ -85,7 +78,7 @@ public class Player : MonoBehaviour
                 Turn();
             }
         }
-        else if (Input.GetKey(KeyCode.A) || horiz == -1.00)
+        else if (Input.GetKey(KeyCode.A))
         {
             //if (facingLeft && isKissingWall())
             //{
@@ -111,13 +104,12 @@ public class Player : MonoBehaviour
 
         // ------ Jumping --------
         // The longer you hold down space, the higher you go
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("JoystickJump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            audioManager.PlaySFX(audioManager.jump);
             if (isGrounded || doubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                
+
                 isGrounded = false;
                 doubleJump = !doubleJump;
             }
@@ -125,11 +117,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
         // ------- Attacks --------
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("JoystickRanged"))
+        if (Input.GetMouseButtonDown(0))
 
         {
             // If the player is facing left, shoot left
-             audioManager.PlaySFX(audioManager.shoot);
             if (facingLeft)
             {
                 Shoot(-transform.right, projectileSpeed);
@@ -142,10 +133,9 @@ public class Player : MonoBehaviour
             state = MovementState.shoot;
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("JoystickMelee"))
+        if (Input.GetMouseButtonDown(1))
         {
             // If the player is facing left, Swing left
-            audioManager.PlaySFX(audioManager.melee);
             if (facingLeft)
             {
                 Melee(-transform.right);
@@ -155,7 +145,7 @@ public class Player : MonoBehaviour
             {
                 Melee(transform.right);
             }
-             state = MovementState.melee;
+            state = MovementState.melee;
         }
 
         // ---- Gravity --------
@@ -167,7 +157,7 @@ public class Player : MonoBehaviour
         else
         {
             rb.gravityScale = light_gravityScale;
-          
+
         }
         if (rb.velocity.y > 1.5f)
         {
@@ -176,7 +166,6 @@ public class Player : MonoBehaviour
 
         // Updating Animator per frame
         anim.SetInteger("state", (int)state);
-        //WallSlide();
     }
 
     void Turn()
@@ -200,7 +189,7 @@ public class Player : MonoBehaviour
     public GameObject Melee(Vector3 direction)
     {
         GameObject hitscan = Instantiate(MeleePrefab);
-        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + .7f, transform.position.z) + direction;;
+        hitscan.transform.position = new Vector3(transform.position.x, transform.position.y + .7f, transform.position.z) + direction; ;
         Destroy(hitscan, 0.3f);
         return hitscan;
     }
@@ -219,28 +208,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("KillBox") || collision.gameObject.CompareTag("Boss"))
         {
             //Deals one damage to the player
-            TakingDamage();
+            Debug.Log("Damaged to Player");
         }
     }
-    // Note: No time to make it useful
-    //bool isKissingWall()
-    //{
-    //    return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
-    //}
-    //
-    //void WallSlide()
-    //{
-    //    if (isKissingWall() && !isGrounded)
-    //    {
-    //        isWallSliding = true;
-    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
-    //    }
-    //    else isWallSliding = false;
-    //}
-    
-    public void TakingDamage()
-    {
-        HealthBar.PlayerDamaged(1);
-       // audioManager.PlaySFX(audioManager.hurt); 
-    }
 }
+    

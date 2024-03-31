@@ -4,74 +4,69 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    // Reference to waypoints
-    public List<Transform> points;
-    int nextID = 0;
-    int idChangeValue = 1;
-    public float speed = 2;
-    public bool isStandingOnit;
+    public Transform[] points; // List of points the platform moves between
+    public float speed = 2f; // Speed of the platform
 
-    private void Reset()
+    private int currentIndex = 0;
+    private bool moving = false;
+
+    private void FixedUpdate()
     {
-        Init();
+        if (moving)
+        {
+            MovePlatform();
+        }
     }
 
-    void Init()
+    private void MovePlatform()
     {
-        // Make Capsule collider trigger
-        GetComponent<CapsuleCollider2D>().isTrigger = true;
-        // Create Root object
-        GameObject root = new GameObject(name + "_Root");
-        // Reset Position of Root to enemy object
-        root.transform.position = transform.position;
-        // Set enemy object as child of root
-        transform.SetParent(root.transform);
-        // Create Waypoints object
-        GameObject waypoints = new GameObject("Waypoints");
-        // Reset waypoints position to root        
-        waypoints.transform.SetParent(root.transform);
-        // Make waypoints object child of root
-        waypoints.transform.position = root.transform.position;
-        // Create two points (gameobject) and reset their position to waypoints objects
-        // Make the points children of waypoint object
-        GameObject top = new GameObject("Point1"); top.transform.SetParent(waypoints.transform); top.transform.position = root.transform.position;
-        GameObject bottom = new GameObject("Point2"); bottom.transform.SetParent(waypoints.transform); bottom.transform.position = root.transform.position;
-        // Init points list then add the points to it
-        points = new List<Transform>
+        Vector2 targetPosition = points[currentIndex].position;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.fixedDeltaTime);
+
+        if (Vector2.Distance(transform.position, targetPosition) < 0.01f)
         {
-            top.transform,
-            bottom.transform
-        };
+            // If the platform has reached the target position, switch to the next point
+            currentIndex = (currentIndex + 1) % points.Length;
+        }
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Get the next Point transform
-        Transform goalPoint = points[nextID];
-        if (isStandingOnit)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            transform.position = Vector2.MoveTowards(transform.position, goalPoint.position, speed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, goalPoint.position) < 0.2f)
+            collision.transform.SetParent(this.transform);
+            moving = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+            moving = false;
+        }
+    }
+
+    // Method to draw Gizmos to visualize the path
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        if (points.Length > 0)
+        {
+            for (int i = 0; i < points.Length; i++)
             {
-                // Check if we are at the end of the line (make the change -1)
-                if (nextID == points.Count - 1) idChangeValue = -1;
-                // Check if we are at the start of the line (make the change +1)
-                if (nextID == 0) idChangeValue = 1;
-                // Apply the change on the nextID
-                nextID += idChangeValue;
+                if (i < points.Length - 1)
+                {
+                    Gizmos.DrawLine(points[i].position, points[i + 1].position);
+                }
             }
         }
     }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("GroundCheck"))
-        {
-            isStandingOnit = true;
-        }
-        else
-        {
-            isStandingOnit = false;
-        }
-    }
 }
+
+
+
+
+
