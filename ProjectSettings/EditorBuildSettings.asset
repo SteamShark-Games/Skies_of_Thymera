@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 1f02d15e092da9c4c927d86eaeadebf7
   - enabled: 1
+    path: Assets/Scenes/StartCutscene.unity
+    guid: 170bf7b292d82534196eeac8a1d8ea71
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 668bb21a35d06904199b2cca6c84d903
   - enabled: 1
@@ -20,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 1576b8b8f6ea87a469a47f5bd4164558
+  - enabled: 1
+    path: Assets/Scenes/Final Boss.unity
+    guid: c4e1f91695afdb8499f2233898cfc3ab
+  - enabled: 1
+    path: Assets/Scenes/EndCutscene.unity
+    guid: f8247e6b4c45a64409e30c6f310e446f
   m_configObjects: {}

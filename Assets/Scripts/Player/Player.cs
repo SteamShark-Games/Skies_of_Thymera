@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (audioManager != null) audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         Time.timeScale = 1f;
     }
 
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
 
         {
             // If the player is facing left, shoot left
-             audioManager.PlaySFX(audioManager.shoot);
+            audioManager.PlaySFX(audioManager.shoot);
             if (facingLeft)
             {
                 Shoot(-transform.right, projectileSpeed);
@@ -241,6 +241,6 @@ public class Player : MonoBehaviour
     public void TakingDamage()
     {
         HealthBar.PlayerDamaged(1);
-       // audioManager.PlaySFX(audioManager.hurt); 
+        audioManager.PlaySFX(audioManager.hurt); 
     }
 }

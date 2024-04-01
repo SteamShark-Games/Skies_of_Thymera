@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossUIBar : MonoBehaviour
@@ -14,7 +15,7 @@ public class BossUIBar : MonoBehaviour
     float maxHealth = 8.0f;
     public bool ShieldOn;
 
-    public Battery_Logic battery;
+    Battery_Logic battery;
 
     public void Start()
     {
@@ -54,6 +55,7 @@ public class BossUIBar : MonoBehaviour
             else if (health == 4.0f)
             {
                 BossHealth[4].SetActive(false);
+                ShieldOn = !ShieldOn;
                 Battery_Logic.instance.ResetBatteries();
                 // Half Health
             }
@@ -74,9 +76,8 @@ public class BossUIBar : MonoBehaviour
             {
                 BossHealth[0].SetActive(false);
                 bossHPBar.SetActive(false);
-                Debug.Log("Boss Defeated!");
+                SceneManager.LoadScene("EndCutscene");
             }
         }
     }
-
 }
