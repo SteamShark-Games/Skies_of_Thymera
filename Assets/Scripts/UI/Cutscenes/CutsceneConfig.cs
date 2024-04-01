@@ -13,8 +13,7 @@ public class CutsceneConfig : DialogueViewBase
 
     float skipCutscene = 0;
     public string sceneName = "Level 1";
-    Dictionary<string, GameObject> imageDict = new Dictionary <string, GameObject>();
-
+    List<GameObject> images = new List<GameObject>();
 
     // Active run line for dialogue and requests player input from controls to continue dialogue
     public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
@@ -24,7 +23,6 @@ public class CutsceneConfig : DialogueViewBase
         advanceHandler = requestInterrupt;
     }
 
-
     // Dismisses canvas once dialogue is exhausted + brings player to Level 1
     public override void DismissLine(Action onDismissalComplete)
     {
@@ -32,11 +30,10 @@ public class CutsceneConfig : DialogueViewBase
         onDismissalComplete();
     }
 
-
     // Invokes player input to advance dialogue from cutscene
     public override void UserRequestedViewAdvancement()
     {
-        if(container.gameObject.activeSelf)
+        if (container.gameObject.activeSelf)
         {
             advanceHandler?.Invoke();
         }
@@ -51,19 +48,33 @@ public class CutsceneConfig : DialogueViewBase
         SceneManager.LoadScene(sceneName);
     }
 
-
     // Sets all cutscene images and make them inactive until called in the yarnspinner script to be active
     [YarnCommand("ShowImage")]
     public void ShowImage(string filename)
     {
-        foreach (Transform child in transform) child.gameObject.SetActive(false);
-        imageDict[filename].SetActive(true);
+        foreach (var image in images)
+        {
+            image.SetActive(false);
+        }
+
+        var foundImage = images.Find(img => img.name == filename);
+        if (foundImage != null)
+        {
+            foundImage.SetActive(true);
+        }
+        else
+        {
+            
+        }
     }
 
-    // Finds all images for cutscene and adds them to a dictionary for the yarnspinner script to display
+    // Finds all images for cutscene and adds them to the list
     void Start()
     {
-        foreach (Transform child in transform) imageDict.Add(child.gameObject.name, child.gameObject);
+        foreach (Transform child in transform)
+        {
+            images.Add(child.gameObject);
+        }
     }
 
     void Update()
