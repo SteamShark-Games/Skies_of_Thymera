@@ -21,14 +21,6 @@ public class PlayerTestground : MonoBehaviour
     float projectileSpeed = 15f;
 
 
-    // Note: I'll add later
-    // Wall Silde
-    //float clampedFall = 10f;
-    //bool isWallSliding;
-    //float wallSlideSpeed;
-    //public GameObject wallCheck;
-    //public LayerMask walllayer;
-
     // Gravity Scales
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
@@ -46,12 +38,7 @@ public class PlayerTestground : MonoBehaviour
 
     }
 
-    /* For Later testing
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(move.x * speed * Time.deltaTime, rb.velocity.y);
-    }*/
-
+  
     // Update is called once per frame
     void Update()
     {

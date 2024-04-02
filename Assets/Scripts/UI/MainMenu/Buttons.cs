@@ -15,7 +15,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("StartCutscene");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void OptionsButton()

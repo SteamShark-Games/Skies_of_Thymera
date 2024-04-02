@@ -14,21 +14,21 @@ public class Player : MonoBehaviour
 
     // Player Variables
     public float speed = 8f;
-    //Vector2 move;
+    float horiz;
     bool facingLeft;
     bool doubleJump;
     public float jumpHeight = 20f;
+    public float clampedFall = -20f;
     public bool isGrounded;
     float projectileSpeed = 15f;
 
 
     // Note: I'll add later
     // Wall Silde
-    //float clampedFall = 10f;
     //bool isWallSliding;
     //float wallSlideSpeed;
-    //public GameObject wallCheck;
-    //public LayerMask walllayer;
+    public GameObject wallCheck;
+    public LayerMask walllayer;
 
     // Gravity Scales
     float light_gravityScale = 5f;
@@ -49,64 +49,37 @@ public class Player : MonoBehaviour
         
     }
 
-    /* For Later testing
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(move.x * speed * Time.deltaTime, rb.velocity.y);
-    }*/
-
     // Update is called once per frame
     void Update()
     {
         anim = GetComponent<Animator>();
-        //move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         MovementState state;
 
         // ---- Joystick Movement ----
-        float horiz = Input.GetAxis("Horizontal");
-        
+        horiz = Input.GetAxis("Horizontal");
+
+        float clampedFallSpeed = Mathf.Clamp(rb.velocity.y, clampedFall, float.MaxValue);
+        rb.velocity = new Vector2(rb.velocity.x, clampedFallSpeed);
 
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D) || horiz == 1.00)
         {
-            //if (!facingLeft && isKissingWall())
-            //{
-            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            //}
-            //else
-            if (!facingLeft)
-            {
-                // Sets X velocity to speed
-                rb.velocity = new Vector2(speed, rb.velocity.y);
-            }
             state = MovementState.running;
-            if (facingLeft)
-            {
-                Turn();
-            }
+            if (!facingLeft && isKissingWall()) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            else if (!facingLeft) rb.velocity = new Vector2(speed, rb.velocity.y);
+            if (facingLeft) Turn();
         }
         else if (Input.GetKey(KeyCode.A) || horiz == -1.00)
         {
-            //if (facingLeft && isKissingWall())
-            //{
-            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            //}
-            //else
-            if (facingLeft)
-            {
-                // Sets X velocity to -speed
-                rb.velocity = new Vector2(-speed, rb.velocity.y);
-            }
             state = MovementState.running;
-            if (!facingLeft)
-            {
-                Turn();
-            }
+            if (facingLeft && isKissingWall()) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            else if (facingLeft) rb.velocity = new Vector2(-speed, rb.velocity.y);
+            if (!facingLeft) Turn();
         }
         else
         {
             state = MovementState.idle;
-            rb.velocity = new Vector2(0.0f, rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
+            rb.velocity = new Vector2(0, rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
         }
 
         // ------ Jumping --------
@@ -159,7 +132,7 @@ public class Player : MonoBehaviour
         }
 
         // ---- Gravity --------
-        if (rb.velocity.y < 0 && !isGrounded)
+        if (rb.velocity.y < 0.1)
         {
             state = MovementState.falling;
             rb.gravityScale = fallgravityScale;
@@ -222,12 +195,12 @@ public class Player : MonoBehaviour
             TakingDamage();
         }
     }
-    // Note: No time to make it useful
-    //bool isKissingWall()
-    //{
-    //    return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
-    //}
-    //
+    
+    bool isKissingWall()
+    {
+        return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
+    }
+    
     //void WallSlide()
     //{
     //    if (isKissingWall() && !isGrounded)
