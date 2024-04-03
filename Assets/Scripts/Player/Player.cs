@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     public GameObject wallCheck;
     public LayerMask walllayer;
 
+    public Material defaultMaterial; // Assuming the player's material is changeable
+    public float flashDuration = 1f; // Duration of the flash in seconds
+
     // Gravity Scales
     float light_gravityScale = 5f;
     float fallgravityScale = 10f;
@@ -199,10 +202,23 @@ public class Player : MonoBehaviour
     {
         return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
     }
-    
+
+    private bool canTakeDamage = true;
+
     public void TakingDamage()
     {
-        HealthBar.PlayerDamaged(1);
-        audioManager.PlaySFX(audioManager.hurt); 
+        if (canTakeDamage)
+        {
+            HealthBar.PlayerDamaged(1);
+            audioManager.PlaySFX(audioManager.hurt);
+            StartCoroutine(WaitForDamageCooldown());
+        }
+    }
+
+    IEnumerator WaitForDamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(1f); // Wait for one second
+        canTakeDamage = true;
     }
 }
