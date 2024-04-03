@@ -12,6 +12,7 @@ public class Sentry_AI : MonoBehaviour
     float projectileSpeed = 5;
     float pps; // Projectile per Second
     bool playerInRange;
+    bool facingLeft;
 
     // Update is called once per frame
     void Update()
@@ -23,9 +24,16 @@ public class Sentry_AI : MonoBehaviour
             pps = 0;
             fire();
         }
+
+        // Check if target is to the left and not facing left, or to the right and facing left
+        if ((target.position.x < transform.position.x && facingLeft) ||
+            (target.position.x > transform.position.x && !facingLeft))
+        {
+            Turn();
+        }
     }
 
-    private void fire() 
+    private void fire()
     {
         Vector3 toTarget = target.position - transform.position;
         Vector3 direction = toTarget.normalized;
@@ -47,4 +55,16 @@ public class Sentry_AI : MonoBehaviour
             playerInRange = false;
         }
     }
+
+    void Turn()
+    {
+        //stores scale and flips the player along the x axis, 
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        facingLeft = !facingLeft;
+    }
 }
+
+
+
