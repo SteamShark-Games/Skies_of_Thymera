@@ -14,17 +14,17 @@ public class Player : MonoBehaviour
 
     // Player Variables
     public float speed = 8f;
-    float horiz;
+    //Vector2 move;
     bool facingLeft;
     bool doubleJump;
     public float jumpHeight = 20f;
-    public float clampedFall = -20f;
     public bool isGrounded;
     float projectileSpeed = 15f;
 
 
     // Note: I'll add later
     // Wall Silde
+    //float clampedFall = 10f;
     //bool isWallSliding;
     //float wallSlideSpeed;
     public GameObject wallCheck;
@@ -56,10 +56,8 @@ public class Player : MonoBehaviour
         MovementState state;
 
         // ---- Joystick Movement ----
-        horiz = Input.GetAxis("Horizontal");
-
-        float clampedFallSpeed = Mathf.Clamp(rb.velocity.y, clampedFall, float.MaxValue);
-        rb.velocity = new Vector2(rb.velocity.x, clampedFallSpeed);
+        float horiz = Input.GetAxis("Horizontal");
+        
 
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D) || horiz == 1.00)
@@ -68,6 +66,7 @@ public class Player : MonoBehaviour
             if (!facingLeft && isKissingWall()) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
             else if (!facingLeft) rb.velocity = new Vector2(speed, rb.velocity.y);
             if (facingLeft) Turn();
+            
         }
         else if (Input.GetKey(KeyCode.A) || horiz == -1.00)
         {
@@ -79,7 +78,7 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.idle;
-            rb.velocity = new Vector2(0, rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
+            rb.velocity = new Vector2(0.0f, rb.velocity.y); // Note: Need to rework this so that the conveyor belt works better 
         }
 
         // ------ Jumping --------
@@ -132,7 +131,7 @@ public class Player : MonoBehaviour
         }
 
         // ---- Gravity --------
-        if (rb.velocity.y < 0.1)
+        if (rb.velocity.y < 0 && !isGrounded)
         {
             state = MovementState.falling;
             rb.gravityScale = fallgravityScale;
@@ -195,21 +194,11 @@ public class Player : MonoBehaviour
             TakingDamage();
         }
     }
-    
+    // Note: No time to make it useful
     bool isKissingWall()
     {
         return Physics2D.OverlapCircle(wallCheck.transform.position, 0.2f, walllayer);
     }
-    
-    //void WallSlide()
-    //{
-    //    if (isKissingWall() && !isGrounded)
-    //    {
-    //        isWallSliding = true;
-    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
-    //    }
-    //    else isWallSliding = false;
-    //}
     
     public void TakingDamage()
     {

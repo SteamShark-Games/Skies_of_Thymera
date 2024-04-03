@@ -16,9 +16,8 @@ public class ConveyorBelt : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 pos = rb.position;
-        if (clockwise) rb.position += Vector2.left * speed;
-        else rb.position += Vector2.right * speed;
+        if (clockwise) rb.position += Vector2.left * speed * Time.fixedDeltaTime;
+        else rb.position += Vector2.right * speed * Time.fixedDeltaTime; 
         rb.MovePosition(pos);
     }
-
 }

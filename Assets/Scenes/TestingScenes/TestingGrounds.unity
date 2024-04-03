@@ -5587,6 +5587,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3158223432806645184, guid: eb6eaccfa8cebd746b02eb76f2f61f1c, type: 3}
+      propertyPath: m_TagString
+      value: ConveyorBelt
+      objectReference: {fileID: 0}
     - target: {fileID: 5270638407735357849, guid: eb6eaccfa8cebd746b02eb76f2f61f1c, type: 3}
       propertyPath: speed
       value: 10

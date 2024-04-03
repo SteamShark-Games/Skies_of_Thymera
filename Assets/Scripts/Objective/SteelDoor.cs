@@ -5,6 +5,7 @@ using UnityEngine;
 public class SteelDoor : MonoBehaviour
 {
     public GameObject[] generators;
+    
 
     void Update()
     {

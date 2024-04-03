@@ -49,11 +49,6 @@ public class PlayerTestground : MonoBehaviour
         // ---- Movement ------ 
         if (Input.GetKey(KeyCode.D))
         {
-            //if (!facingLeft && isKissingWall())
-            //{
-            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            //}
-            //else
             if (!facingLeft)
             {
                 // Sets X velocity to speed
@@ -67,11 +62,6 @@ public class PlayerTestground : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            //if (facingLeft && isKissingWall())
-            //{
-            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-            //}
-            //else
             if (facingLeft)
             {
                 // Sets X velocity to -speed

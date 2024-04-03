@@ -76,7 +76,8 @@ public class BossUIBar : MonoBehaviour
             {
                 BossHealth[0].SetActive(false);
                 bossHPBar.SetActive(false);
-                SceneManager.LoadScene("EndCutscene");
+                int currentScene = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(currentScene + 1);
             }
         }
     }
