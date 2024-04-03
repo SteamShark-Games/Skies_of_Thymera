@@ -14,10 +14,15 @@ public class GameController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<Player>().enabled = false;
-            LevelCompleteScene.SetActive(true);
-            StartCoroutine(Fade());
+            LevelComplete();
         }
+    }
+
+    public void LevelComplete()
+    {
+        Player.GetComponent<Player>().enabled = false;
+        LevelCompleteScene.SetActive(true);
+        StartCoroutine(Fade());
     }
 
     private IEnumerator Fade()

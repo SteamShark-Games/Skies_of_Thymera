@@ -16,6 +16,7 @@ public class BossUIBar : MonoBehaviour
     public bool ShieldOn;
 
     Battery_Logic battery;
+    GameController gameController;
 
     public void Start()
     {
@@ -76,8 +77,7 @@ public class BossUIBar : MonoBehaviour
             {
                 BossHealth[0].SetActive(false);
                 bossHPBar.SetActive(false);
-                int currentScene = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(currentScene + 1);
+                gameController.LevelComplete();
             }
         }
     }

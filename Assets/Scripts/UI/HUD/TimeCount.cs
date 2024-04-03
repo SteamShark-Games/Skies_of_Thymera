@@ -42,3 +42,4 @@ public class TimeCount : MonoBehaviour
         FinalTime.text = string.Format("Final Time: " + "{0:00}:{1:00}", min, sec);
     }
 }
+
