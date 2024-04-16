@@ -24,7 +24,7 @@ public class Pause : MonoBehaviour
         }
 
         // Joystick substitute for RestartButton
-        if (GameIsPaused == true && Input.GetButtonDown("JoystickConfirm"))
+        if (GameIsPaused == true && Input.GetButtonDown("JoystickRanged"))
         {
             RestartButton();
         }

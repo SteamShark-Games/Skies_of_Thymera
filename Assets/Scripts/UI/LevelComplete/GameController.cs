@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject LevelCompleteScene;
     public GameObject UI;
     public GameObject Player;
+    bool levelCompletion = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +23,26 @@ public class GameController : MonoBehaviour
     {
         Player.GetComponent<Player>().enabled = false;
         LevelCompleteScene.SetActive(true);
+        levelCompletion = true;
         StartCoroutine(Fade());
+    }
+
+    void Update()
+    {
+       if (levelCompletion == true && Input.GetButtonDown("JoystickCancel"))
+        {
+            MenuButton();
+        }
+
+       if (levelCompletion == true && Input.GetButtonDown("JoystickRanged"))
+        {
+            RestartButton();
+        }
+
+       if (levelCompletion == true && Input.GetButtonDown("JoystickConfirm"))
+        {
+            ContinueButton();
+        }
     }
 
     private IEnumerator Fade()
