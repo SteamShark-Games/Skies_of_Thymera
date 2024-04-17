@@ -11,7 +11,7 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("JoystickPause")) // Gameplay is paused
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("JoystickBack")) // Gameplay is paused
         {
             if (GameIsPaused)
             {
@@ -22,19 +22,6 @@ public class Pause : MonoBehaviour
                 PauseGame();
             }
         }
-
-        // Joystick substitute for RestartButton
-        if (GameIsPaused == true && Input.GetButtonDown("JoystickRanged"))
-        {
-            RestartButton();
-        }
-
-        // Joystick substitute for QuitButton
-        if (GameIsPaused == true && Input.GetButtonDown("JoystickCancel"))
-        {
-            QuitButton();
-        }
-
     }
 
     void PauseGame()

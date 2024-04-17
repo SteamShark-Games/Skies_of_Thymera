@@ -17,6 +17,7 @@ TagManager:
   - Battery
   - CameraZone
   - ConveyorBelt
+  - Selectable
   layers:
   - Default
   - TransparentFX

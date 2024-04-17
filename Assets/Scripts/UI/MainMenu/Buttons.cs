@@ -14,33 +14,6 @@ public class MainMenuButtons : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    void Update()
-    {
-        // Joystick substitute for PlayButton
-        if (Input.GetButtonDown("JoystickConfirm"))
-        {
-            if (optionsOpen == false)
-            {
-                SceneManager.LoadScene("Level 1");
-            }
-        }
-
-        // Joystick substitute for OptionsButton
-        if (Input.GetButtonDown("JoystickPause"))
-        {
-            OptionsButton();
-            optionsOpen = true;
-
-        }
-
-        // Joystick substitute for CloseButton
-        if (optionsOpen == true && Input.GetButtonDown("JoystickCancel"))
-        {
-            CloseButton();
-            optionsOpen = false;
-        }
-    }
-
     public void PlayButton()
     {
         SceneManager.LoadScene("Level 1");
