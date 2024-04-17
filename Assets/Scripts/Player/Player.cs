@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
                 doubleJump = !doubleJump;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("JoystickJump")) && rb.velocity.y > 0f) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
         // ------- Attacks --------
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("JoystickRanged"))
