@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class SceneNameKeeper : MonoBehaviour
 {
     public static SceneNameKeeper Instance { get; private set; }
-
-    private string lastSceneName;
+    string newSceneName; 
+    string lastSceneName;
 
     private void Awake()
     {
@@ -15,6 +15,7 @@ public class SceneNameKeeper : MonoBehaviour
             // If not, set the instance to this and mark it as persistent
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Start();
         }
         else
         {
