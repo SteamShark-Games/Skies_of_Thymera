@@ -11,12 +11,12 @@ public class BossUIBar : MonoBehaviour
     public List<GameObject> BossHealth;
 
     // Floats
-    float health;
+    public float health;
     float maxHealth = 8.0f;
     public bool ShieldOn;
 
     Battery_Logic battery;
-    GameController gameController;
+    public GameController gameController;
 
     public void Start()
     {
@@ -73,11 +73,12 @@ public class BossUIBar : MonoBehaviour
                 BossHealth[1].SetActive(false);
             }
             
-            if (health <= 0.0f)
+            if (health == 0.0f)
             {
+                gameController.LevelComplete();
                 BossHealth[0].SetActive(false);
                 bossHPBar.SetActive(false);
-                gameController.LevelComplete();
+                gameObject.SetActive(false);
             }
         }
     }

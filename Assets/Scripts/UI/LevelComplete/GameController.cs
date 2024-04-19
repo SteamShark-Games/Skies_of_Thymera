@@ -27,24 +27,6 @@ public class GameController : MonoBehaviour
         StartCoroutine(Fade());
     }
 
-    void Update()
-    {
-       if (levelCompletion == true && Input.GetButtonDown("JoystickCancel"))
-        {
-            MenuButton();
-        }
-
-       if (levelCompletion == true && Input.GetButtonDown("JoystickRanged"))
-        {
-            RestartButton();
-        }
-
-       if (levelCompletion == true && Input.GetButtonDown("JoystickConfirm"))
-        {
-            ContinueButton();
-        }
-    }
-
     private IEnumerator Fade()
     {
         yield return new WaitForSeconds(2f);
