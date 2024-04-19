@@ -7,6 +7,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject optionMenu;
+    public GameObject creditsMenu;
     public bool optionsOpen = false;
 
     public void Start()
@@ -25,17 +26,29 @@ public class MainMenuButtons : MonoBehaviour
         optionMenu.SetActive(true);
     }
 
-    public void CloseButton()
+    public void CreditsButton()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
+
+    public void CloseOptionsButton()
     {
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
+    }
+
+    public void CloseCreditsButton()
+    {
+        mainMenu.SetActive(true);
+        creditsMenu.SetActive(false);
     }
 
 
     public void QuitButton()
     {
         // Funny Quit :)
-        Application.Quit();
+        // Application.Quit(); ------ Deactive for LevelUp
         Debug.Log("Get out loser");
     }
 }
